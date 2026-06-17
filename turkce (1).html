@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türkçe — Türkisch für Deutsch-Türken</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D1117;--bg2:#161B22;--bg3:#21262D;
+  --tx:#F0E6D3;--tx2:#8B949E;--tx3:#58626E;
+  --red:#E8192C;--red2:#ff3347;
+  --teal:#00B4D8;--gold:#C9A84C;--gold2:#f0c14b;
+  --bd:#30363D;--r:12px;--rs:8px
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif}
+.syne{font-family:'Syne',sans-serif}
+.hidden{display:none!important}
+a{color:inherit;text-decoration:none}
+
+/* ── ONBOARDING ── */
+#onboarding{min-height:100vh;display:flex;flex-direction:column}
+.ob-step{display:none;flex-direction:column;flex:1;padding:2.5rem 2rem 2rem;max-width:560px;margin:0 auto;width:100%}
+.ob-step.active{display:flex}
+.ob-prog{height:3px;background:var(--bg3);border-radius:2px;margin-bottom:2rem;overflow:hidden}
+.ob-prog-fill{height:100%;background:var(--red);border-radius:2px;transition:width .4s}
+.ob-step-lbl{font-size:11px;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.ob-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:.5rem;letter-spacing:-.02em}
+.ob-sub{font-size:14px;color:var(--tx2);line-height:1.6;margin-bottom:1.5rem}
+.ob-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.ob-opt{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:13px 16px;cursor:pointer;font-size:14px;font-family:'Inter',sans-serif;color:var(--tx);text-align:left;transition:all .15s;display:flex;align-items:flex-start;gap:12px;line-height:1.45}
+.ob-opt:hover{border-color:var(--red)}
+.ob-opt.sel{border-color:var(--red);background:rgba(232,25,44,.07)}
+.ob-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--bd);flex-shrink:0;margin-top:2px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ob-opt.sel .ob-dot{background:var(--red);border-color:var(--red)}
+.ob-opt.sel .ob-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+.ob-sub2{font-size:12px;color:var(--tx3);margin-top:3px}
+.ob-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem}
+.ob-tile{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px 12px;cursor:pointer;font-size:13px;font-family:'Inter',sans-serif;color:var(--tx);text-align:left;transition:all .15s}
+.ob-tile:hover{border-color:var(--red)}.ob-tile.sel{border-color:var(--red);background:rgba(232,25,44,.07)}
+.ob-tile-icon{font-size:22px;margin-bottom:7px}
+.ob-tile.sel .ob-tile-icon{filter:none}
+.ob-tile-name{font-weight:600;font-size:13px;margin-bottom:2px}
+.ob-tile-desc{font-size:11px;color:var(--tx3);line-height:1.4}
+.ob-scenario{background:var(--bg3);border-radius:var(--rs);padding:12px 14px;font-size:13px;color:var(--tx2);line-height:1.55;margin-bottom:1.25rem}
+.ob-nav{display:flex;gap:10px;margin-top:auto;padding-top:1rem}
+.ob-back{background:none;border:1px solid var(--bd);border-radius:var(--rs);padding:11px 18px;font-size:13px;font-family:'Inter',sans-serif;color:var(--tx2);cursor:pointer;transition:all .15s}
+.ob-back:hover{color:var(--tx);border-color:var(--tx3)}
+.ob-next{flex:1;background:var(--red);border:none;border-radius:var(--rs);padding:12px;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;color:#fff;cursor:pointer;opacity:.3;pointer-events:none;transition:opacity .15s}
+.ob-next.on{opacity:1;pointer-events:auto}.ob-next.on:hover{background:var(--red2)}
+
+.ob-welcome{text-align:center;padding:3rem 1rem 2rem;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ob-brand{width:60px;height:60px;border-radius:16px;background:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff}
+.ob-welcome h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:.875rem}
+.ob-welcome h1 em{color:var(--red);font-style:normal}
+.ob-welcome p{font-size:14px;color:var(--tx2);line-height:1.7;max-width:380px;margin:0 auto 2rem}
+.fpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2rem}
+.fpill{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--tx2)}
+.ob-start{background:var(--red);border:none;border-radius:var(--rs);padding:14px 32px;font-size:15px;font-weight:500;font-family:'Inter',sans-serif;color:#fff;cursor:pointer;transition:opacity .15s}
+.ob-start:hover{opacity:.9}
+
+.ob-result{text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;padding:1.5rem 0}
+.ob-ring{width:96px;height:96px;border-radius:50%;border:2.5px solid var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.ob-ring-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--red)}
+.ob-ring-sub{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em}
+.ob-r-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:.5rem}
+.ob-r-desc{font-size:13px;color:var(--tx2);line-height:1.65;margin-bottom:1.5rem;max-width:360px}
+.ob-r-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%;margin-bottom:1.25rem}
+.ob-rcard{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:10px 8px;text-align:center}
+.ob-rcard-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:700}
+.ob-rcard-lbl{font-size:11px;color:var(--tx3);margin-top:2px}
+.ob-focus-list{width:100%;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:6px;text-align:left}
+.ob-focus-item{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:10px 12px;display:flex;align-items:center;gap:10px;font-size:13px}
+.ob-focus-icon{font-size:18px;flex-shrink:0}
+.ob-focus-lbl{font-weight:600;font-size:13px}
+.ob-focus-desc{font-size:11px;color:var(--tx3);margin-top:1px}
+.ob-enter{background:var(--red);border:none;border-radius:var(--rs);padding:14px;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;color:#fff;cursor:pointer;width:100%;transition:opacity .15s}
+.ob-enter:hover{opacity:.9}
+
+/* ── MAIN APP ── */
+#mainapp{display:none;flex-direction:column;min-height:100vh}
+#mainapp.active{display:flex}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--bd);background:rgba(13,17,23,.95);position:sticky;top:0;z-index:50}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.logo em{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:4px}
+.nb{background:none;border:none;color:var(--tx2);padding:.5rem .9rem;border-radius:var(--rs);cursor:pointer;font-size:.85rem;font-family:'Inter',sans-serif;transition:all .15s}
+.nb:hover,.nb.active{color:var(--tx);background:var(--bg3)}
+.nav-av{width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;cursor:pointer;font-family:'Syne',sans-serif}
+.scr{display:none;padding:1.75rem;flex:1;max-width:700px;margin:0 auto;width:100%}
+.scr.active{display:block}
+
+/* home */
+.profile-bar{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.profile-av{width:46px;height:46px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:#fff;flex-shrink:0}
+.profile-info{flex:1}
+.profile-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.15rem}
+.profile-lv{font-size:.75rem;color:var(--teal)}
+.profile-xp{text-align:right}
+.xp-val{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--gold)}
+.xp-lbl{font-size:.7rem;color:var(--tx3);margin-top:.1rem}
+.sec-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:.3rem;letter-spacing:-.02em}
+.sec-sub{color:var(--tx2);font-size:.85rem;margin-bottom:1.1rem}
+.today-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem}
+.today-icon{font-size:1.8rem;flex-shrink:0}
+.today-info{flex:1}
+.today-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+.today-desc{font-size:.8rem;color:var(--tx2);line-height:1.45}
+.today-btn{background:var(--red);border:none;border-radius:var(--rs);padding:.55rem 1.1rem;font-size:.8rem;font-weight:500;font-family:'Inter',sans-serif;color:#fff;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:opacity .15s}
+.today-btn:hover{opacity:.85}
+.mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.875rem;margin-bottom:1.25rem}
+.mod{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.25rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.mod::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .2s}
+.mod.rc::before{background:var(--red)}.mod.tc::before{background:var(--teal)}.mod.gc::before{background:var(--gold)}
+.mod:hover{border-color:var(--tx3);transform:translateY(-2px)}.mod:hover::before{opacity:1}
+.mod-icon{font-size:1.5rem;margin-bottom:.75rem}
+.mod-name{font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;margin-bottom:.3rem}
+.mod-desc{font-size:.8rem;color:var(--tx2);line-height:1.5}
+.mod-badge{display:inline-block;font-size:.68rem;padding:.18rem .55rem;border-radius:20px;margin-top:.65rem;font-weight:500}
+.mb-hot{background:rgba(232,25,44,.12);color:var(--red);border:1px solid rgba(232,25,44,.25)}
+.mb-new{background:rgba(0,180,216,.12);color:var(--teal);border:1px solid rgba(0,180,216,.25)}
+.mb-lv{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25)}
+.streak-row{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.streak-left{display:flex;align-items:center;gap:.875rem;flex:1}
+.streak-count{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--gold)}
+.streak-sub{font-size:.75rem;color:var(--tx2);margin-top:.1rem}
+.dots{display:flex;gap:.4rem}
+.dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:600}
+.dd{background:var(--gold);color:#0D1117}.dt{background:var(--red);color:#fff}.de{background:var(--bg3);color:var(--tx3)}
+
+/* quiz select */
+.quiz-cats{display:flex;flex-direction:column;gap:.75rem;margin-top:1.1rem}
+.quiz-cat{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.1rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;color:var(--tx);text-align:left;display:flex;align-items:center;gap:1rem;transition:all .18s;position:relative;overflow:hidden}
+.quiz-cat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;opacity:0;transition:opacity .18s}
+.quiz-cat:hover{border-color:var(--tx3);transform:translateY(-2px)}
+.quiz-cat:hover::before{opacity:1}
+.quiz-cat.c-freunde::before{background:var(--teal)}
+.quiz-cat.c-familie::before{background:var(--red)}
+.quiz-cat.c-restaurant::before{background:var(--gold)}
+.quiz-cat.c-urlaub::before{background:#3da5d9}
+.quiz-cat.c-fussball::before{background:#3fb950}
+.q-diff{display:flex;align-items:center;gap:.8rem;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:.6rem .9rem;margin-bottom:1rem}
+.q-diff-lbl{font-size:.7rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+.q-diff input[type=range]{flex:1;accent-color:var(--red);height:4px;cursor:pointer}
+.q-diff-val{font-size:.8rem;font-weight:600;min-width:52px;text-align:right;color:var(--gold2)}
+.q-opt-txt{display:flex;flex-direction:column;gap:.18rem;flex:1}
+.q-opt-gloss{font-size:.78rem;color:var(--tx2);font-style:italic;opacity:.85}
+.q-opt.correct .q-opt-gloss,.q-opt.wrong .q-opt-gloss{opacity:1}
+.fill-sentence{font-family:'Syne',sans-serif;font-size:1.05rem;line-height:1.85;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:.9rem}
+.fill-blank{display:inline-block;min-width:64px;border-bottom:2px solid var(--teal);color:var(--teal);text-align:center;padding:0 .35rem;font-weight:700}
+.fill-blank.correct{color:#4ade80;border-color:#4ade80}
+.fill-blank.wrong{color:#f87171;border-color:#f87171}
+.fill-row{display:flex;gap:.6rem;margin-bottom:1.1rem}
+.fill-input{flex:1;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:.8rem 1rem;color:var(--tx);font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .15s}
+.fill-input:focus{border-color:var(--teal)}
+.fill-input.correct{border-color:#22c55e;color:#4ade80}
+.fill-input.wrong{border-color:var(--red);color:#f87171}
+.fill-input:disabled{opacity:.85}
+.fill-check{background:var(--teal);border:none;border-radius:var(--r);padding:.8rem 1.2rem;color:#04222a;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:opacity .15s}
+.fill-check:hover{opacity:.88}
+.fill-check:disabled{background:var(--bg3);color:var(--tx3);cursor:not-allowed}
+.qc-icon{font-size:1.9rem;flex-shrink:0;width:52px;height:52px;border-radius:14px;background:var(--bg3);display:flex;align-items:center;justify-content:center}
+.qc-body{flex:1;min-width:0}
+.qc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.18rem}
+.qc-desc{font-size:.8rem;color:var(--tx2);line-height:1.45}
+.qc-meta{display:flex;gap:.45rem;margin-top:.5rem;flex-wrap:wrap}
+.qc-tag{font-size:.68rem;padding:.16rem .55rem;border-radius:20px;background:var(--bg3);color:var(--tx2);border:1px solid var(--bd)}
+.qc-arrow{font-size:1.1rem;color:var(--tx3);flex-shrink:0}
+.q-back{background:none;border:1px solid var(--bd);border-radius:var(--rs);padding:.4rem .7rem;font-size:.78rem;font-family:'Inter',sans-serif;color:var(--tx2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:.3rem}
+.q-back:hover{color:var(--tx);border-color:var(--tx3)}
+.q-cat-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:.5rem}
+
+/* quiz */
+.qprog{height:4px;background:var(--bg3);border-radius:2px;margin-bottom:1.35rem;overflow:hidden}
+.qprog-fill{height:100%;background:var(--teal);border-radius:2px;transition:width .4s}
+.qmeta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+.q-topic{font-size:.73rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.08em}
+.q-lvl{font-size:.7rem;padding:.2rem .6rem;border-radius:20px;font-weight:600}
+.lvl-b2{background:rgba(0,180,216,.12);color:var(--teal);border:1px solid rgba(0,180,216,.25)}
+.lvl-c1{background:rgba(232,25,44,.12);color:var(--red);border:1px solid rgba(232,25,44,.25)}
+.q-scene{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:var(--rs);padding:.875rem 1rem;margin-bottom:.9rem;font-size:.85rem;color:var(--gold2);line-height:1.55}
+.q-scene-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);font-weight:600;margin-bottom:.25rem}
+.q-text{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:600;line-height:1.4;margin-bottom:.45rem}
+.q-hint{font-size:.82rem;color:var(--teal);margin-bottom:1.35rem;font-style:italic}
+.q-opts{display:flex;flex-direction:column;gap:.625rem;margin-bottom:1.35rem}
+.q-opt{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:.9rem 1.15rem;cursor:pointer;font-size:.9rem;transition:all .15s;text-align:left;color:var(--tx);font-family:'Inter',sans-serif;display:flex;align-items:flex-start;gap:.75rem;line-height:1.5}
+.q-opt:hover{border-color:var(--teal);background:rgba(0,180,216,.04)}
+.q-opt.correct{border-color:#22c55e;background:rgba(34,197,94,.07);color:#4ade80}
+.q-opt.wrong{border-color:var(--red);background:rgba(232,25,44,.07);color:#f87171}
+.q-opt.dis{pointer-events:none;opacity:.4}
+.q-let{width:26px;height:26px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;flex-shrink:0;color:var(--tx2);margin-top:2px}
+.q-opt.correct .q-let{background:rgba(34,197,94,.2);color:#4ade80}
+.q-opt.wrong .q-let{background:rgba(232,25,44,.2);color:#f87171}
+.q-fb{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1.1rem;font-size:.88rem;line-height:1.6;display:none}
+.q-fb.show{display:block}.q-fb.pos{border-color:rgba(34,197,94,.4)}.q-fb.neg{border-color:rgba(232,25,44,.35)}
+.fb-title{font-weight:600;margin-bottom:.35rem}.fb-title.pos{color:#4ade80}.fb-title.neg{color:#f87171}
+.fb-exp{color:var(--tx2);font-size:.8rem;margin-top:.45rem;padding-top:.45rem;border-top:1px solid var(--bd);line-height:1.6}
+.q-nav{display:flex;justify-content:space-between;align-items:center}
+.xp-pop{font-size:.82rem;color:var(--gold);font-weight:600;opacity:0;transition:opacity .3s}.xp-pop.show{opacity:1}
+.btn-nq{background:var(--red);color:#fff;border:none;padding:.7rem 1.35rem;border-radius:var(--rs);cursor:pointer;font-size:.875rem;font-weight:500;font-family:'Inter',sans-serif;display:none;transition:opacity .15s}
+.btn-nq:hover{opacity:.85}
+.q-result{text-align:center;padding:2.5rem 1rem;display:none}.q-result.show{display:block}
+.qr-score{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--teal);margin-bottom:.5rem}
+.qr-lbl{color:var(--tx2);margin-bottom:1.35rem}
+.qr-badges{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.35rem}
+.qr-badge{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:.5rem 1rem;font-size:.82rem}
+.btn-restart{background:var(--red);color:#fff;border:none;border-radius:var(--rs);padding:.75rem;font-size:.875rem;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;width:100%;margin-bottom:.7rem;transition:opacity .15s}
+.btn-restart:hover{opacity:.85}
+.btn-go-chat{background:none;border:1px solid var(--bd);border-radius:var(--rs);padding:.75rem;font-size:.875rem;font-family:'Inter',sans-serif;color:var(--tx);cursor:pointer;width:100%;transition:all .15s}
+.btn-go-chat:hover{border-color:var(--tx3)}
+
+/* chat */
+.chat-hdr{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:.75rem}
+.effe-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--red),#ff6b35);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.effe-name{font-weight:600;font-size:.95rem}
+.effe-status{font-size:.75rem;color:var(--teal);display:flex;align-items:center;gap:.35rem}
+.effe-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block}
+.mode-bar{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:.6rem 1rem;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.mode-lbl{font-size:.72rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+.mode-pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.mpill{background:var(--bg3);border:1px solid var(--bd);border-radius:20px;padding:.25rem .8rem;font-size:.75rem;cursor:pointer;color:var(--tx2);font-family:'Inter',sans-serif;transition:all .15s}
+.mpill:hover{color:var(--tx)}.mpill.active{background:rgba(232,25,44,.1);border-color:rgba(232,25,44,.3);color:var(--red)}
+.tpills{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.25rem;margin-bottom:.75rem;scrollbar-width:none}
+.tpill{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:.35rem .9rem;font-size:.8rem;cursor:pointer;white-space:nowrap;transition:all .15s;color:var(--tx2);font-family:'Inter',sans-serif}
+.tpill:hover,.tpill.active{background:rgba(232,25,44,.1);border-color:rgba(232,25,44,.3);color:var(--red)}
+.msgs{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.25rem;height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:.9rem;margin-bottom:.875rem;scrollbar-width:thin;scrollbar-color:var(--bg3) transparent}
+.msg{max-width:84%;display:flex;flex-direction:column;gap:.25rem}
+.msg.ai{align-self:flex-start}.msg.usr{align-self:flex-end}
+.mbub{border-radius:var(--r);padding:.8rem 1rem;font-size:.9rem;line-height:1.6}
+.msg.ai .mbub{background:var(--bg3);color:var(--tx);border-bottom-left-radius:4px}
+.msg.usr .mbub{background:var(--red);color:#fff;border-bottom-right-radius:4px}
+.mtime{font-size:.7rem;color:var(--tx3)}.msg.ai .mtime{padding-left:.25rem}.msg.usr .mtime{text-align:right;padding-right:.25rem}
+.mcor{background:rgba(0,180,216,.07);border:1px solid rgba(0,180,216,.2);border-radius:var(--rs);padding:.6rem .875rem;font-size:.8rem;color:var(--teal);margin-top:.3rem;line-height:1.55}
+.mcor-lbl{font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--tx3);margin-bottom:.25rem}
+.chat-input-row{display:flex;gap:.65rem;align-items:flex-end}
+.chat-ta{flex:1;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:.8rem 1rem;color:var(--tx);font-size:.9rem;font-family:'Inter',sans-serif;resize:none;min-height:50px;max-height:140px;transition:border-color .15s;outline:none}
+.chat-ta:focus{border-color:var(--teal)}.chat-ta::placeholder{color:var(--tx3)}
+.chat-send{background:var(--red);border:none;border-radius:var(--r);padding:.8rem;cursor:pointer;color:#fff;font-size:1.1rem;min-width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:opacity .15s;flex-shrink:0}
+.chat-send:hover{opacity:.85}.chat-send:disabled{background:var(--bg3);cursor:not-allowed;color:var(--tx3)}
+.chat-footer{font-size:.72rem;color:var(--tx3);margin-top:.6rem;text-align:center}
+.thinking{display:flex;gap:4px;align-items:center;padding:.5rem 0}
+.thinking span{width:6px;height:6px;border-radius:50%;background:var(--tx3);animation:think 1.2s ease infinite}
+.thinking span:nth-child(2){animation-delay:.2s}.thinking span:nth-child(3){animation-delay:.4s}
+@keyframes think{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+
+/* pronun */
+.pw-card{text-align:center;padding:1.75rem;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:1rem}
+.pw-word{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:700;margin-bottom:.35rem;line-height:1.3}
+.pw-phon{font-size:.95rem;color:var(--teal);margin-bottom:.4rem}
+.pw-de{font-size:.88rem;color:var(--tx2)}
+.pw-ctx{font-size:.78rem;color:var(--tx3);margin-top:.5rem;font-style:italic}
+.pr-tip{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:var(--rs);padding:.8rem 1rem;font-size:.83rem;color:var(--gold2);margin-bottom:1rem;line-height:1.6}
+.pr-tip-lbl{font-weight:600;text-transform:uppercase;font-size:.7rem;letter-spacing:.06em;color:var(--gold);margin-bottom:.3rem}
+.pr-ctls{display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap}
+.pr-btn{flex:1;padding:.8rem;border-radius:var(--rs);border:1px solid var(--bd);cursor:pointer;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--tx);background:none}
+.pr-btn.play{background:rgba(0,180,216,.08);border-color:rgba(0,180,216,.28);color:var(--teal)}.pr-btn.play:hover{background:rgba(0,180,216,.15)}
+.pr-btn.rec{background:rgba(232,25,44,.08);border-color:rgba(232,25,44,.28);color:var(--red)}.pr-btn.rec:hover{background:rgba(232,25,44,.15)}
+.pr-btn.rec.recding{background:var(--red);color:#fff;animation:prec 1s ease infinite}
+@keyframes prec{0%,100%{box-shadow:0 0 0 0 rgba(232,25,44,.4)}50%{box-shadow:0 0 0 10px rgba(232,25,44,0)}}
+.pr-btn.nxt{background:var(--bg3);color:var(--tx2)}.pr-btn.nxt:hover{color:var(--tx);border-color:var(--tx3)}
+.wf-wrap{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:1.1rem;margin-bottom:1rem}
+.wf-lbl{font-size:.73rem;color:var(--tx2);margin-bottom:.7rem;text-transform:uppercase;letter-spacing:.06em}
+.wf{height:58px;display:flex;align-items:center;gap:3px;justify-content:center}
+.wb{width:4px;border-radius:2px;background:var(--bg3);transition:height .1s,background .3s}
+.wb.act{background:var(--teal)}.wb.nat{background:rgba(0,180,216,.35)}
+.sc-row{display:flex;align-items:center;gap:1rem;margin-top:1rem}
+.sc-ring{position:relative;width:64px;height:64px;flex-shrink:0}.sc-ring svg{transform:rotate(-90deg)}
+.sc-val{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700}
+.sc-details{flex:1}
+.sc-det{display:flex;justify-content:space-between;font-size:.82rem;padding:.2rem 0;border-bottom:1px solid var(--bd);color:var(--tx2)}
+.sc-det:last-child{border:none}.sc-det span:last-child{color:var(--tx);font-weight:500}
+.ch-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.875rem}
+.ch-pill{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .15s}
+.ch-pill:hover{border-color:var(--tx3)}
+.ch-l{display:flex;flex-direction:column;gap:.12rem}
+.ch-cat{color:var(--tx2);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+.ch-word{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700}
+.ch-r{display:flex;align-items:center;gap:.5rem}
+.ch-de{font-size:.75rem;color:var(--tx2)}
+.diff-h{font-size:.68rem;padding:.15rem .5rem;border-radius:10px;background:rgba(232,25,44,.1);color:var(--red)}
+.diff-m{font-size:.68rem;padding:.15rem .5rem;border-radius:10px;background:rgba(201,168,76,.1);color:var(--gold)}
+
+/* API key modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem}
+.modal{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:2rem;max-width:440px;width:100%}
+.modal h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:.5rem}
+.modal p{font-size:.875rem;color:var(--tx2);line-height:1.6;margin-bottom:1.25rem}
+.modal input{width:100%;background:var(--bg3);border:1px solid var(--bd);border-radius:var(--rs);padding:.75rem 1rem;color:var(--tx);font-size:.9rem;font-family:'Inter',sans-serif;outline:none;margin-bottom:.75rem;transition:border-color .15s}
+.modal input:focus{border-color:var(--teal)}
+.modal input::placeholder{color:var(--tx3)}
+.modal-note{font-size:.75rem;color:var(--tx3);line-height:1.55;margin-bottom:1.25rem;padding:.75rem;background:var(--bg3);border-radius:var(--rs)}
+.modal-btns{display:flex;gap:.65rem}
+.modal-save{flex:1;background:var(--red);border:none;border-radius:var(--rs);padding:.75rem;font-size:.9rem;font-weight:500;font-family:'Inter',sans-serif;color:#fff;cursor:pointer;transition:opacity .15s}
+.modal-save:hover{opacity:.85}
+.modal-skip{background:none;border:1px solid var(--bd);border-radius:var(--rs);padding:.75rem 1rem;font-size:.9rem;font-family:'Inter',sans-serif;color:var(--tx2);cursor:pointer;transition:all .15s}
+.modal-skip:hover{color:var(--tx);border-color:var(--tx3)}
+</style>
+</head>
+<body>
+
+<!-- API KEY MODAL -->
+<div class="modal-bg" id="api-modal">
+  <div class="modal">
+    <h2 class="syne">🔑 Anthropic API Key</h2>
+    <p>Der KI-Chat mit Effe braucht deinen Anthropic API Key. Er wird nur lokal im Browser gespeichert und nirgendwo übertragen.</p>
+    <input type="password" id="api-key-input" placeholder="sk-ant-api03-..." />
+    <div class="modal-note">
+      🔒 Dein Key bleibt auf deinem Gerät (localStorage). Er wird nur für Anfragen an api.anthropic.com genutzt.<br><br>
+      Noch keinen Key? → <a href="https://console.anthropic.com" target="_blank" style="color:var(--teal)">console.anthropic.com</a>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-skip" onclick="skipApiKey()">Ohne Chat starten</button>
+      <button class="modal-save" onclick="saveApiKey()">Speichern & starten</button>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onboarding">
+
+  <div class="ob-step active" id="os0">
+    <div class="ob-welcome">
+      <div class="ob-brand syne">tç</div>
+      <h1 class="syne">Dein Türkisch ist<br>noch <em>da.</em></h1>
+      <p>Wir holen es zurück — mit echten Gesprächen, nicht Vokabellisten. 2 Minuten Setup, dann geht's los.</p>
+      <div class="fpills">
+        <div class="fpill">💬 KI-Gespräche</div>
+        <div class="fpill">🎙️ Aussprache-Training</div>
+        <div class="fpill">⚡ 5 Min täglich</div>
+        <div class="fpill">📈 Fortschritt tracken</div>
+      </div>
+      <button class="ob-start" onclick="oGo(1)">Jetzt einrichten →</button>
+    </div>
+  </div>
+
+  <div class="ob-step" id="os1">
+    <div class="ob-prog"><div class="ob-prog-fill" style="width:20%"></div></div>
+    <div class="ob-step-lbl">Schritt 1 von 5</div>
+    <div class="ob-title">Wie gut ist dein Türkisch gerade?</div>
+    <div class="ob-sub">Ehrlich — das hilft uns den richtigen Einstieg zu finden.</div>
+    <div class="ob-opts">
+      <button class="ob-opt" onclick="oPick(this,'lv','a',1)">
+        <div class="ob-dot"></div>
+        <div><div>Ich verstehe alles, kann aber kaum sprechen</div><div class="ob-sub2">Antworte auf Deutsch wenn Eltern Türkisch reden</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'lv','b',1)">
+        <div class="ob-dot"></div>
+        <div><div>Ich spreche, aber es klingt nicht natürlich</div><div class="ob-sub2">Germanismen, stockender Redefluss, Fehler</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'lv','c',1)">
+        <div class="ob-dot"></div>
+        <div><div>Ich kann mich gut unterhalten</div><div class="ob-sub2">Idiome, Feinheiten und Slang fehlen noch</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'lv','d',1)">
+        <div class="ob-dot"></div>
+        <div><div>Fast alles vergessen — sehr eingerostet</div><div class="ob-sub2">Grundlagen irgendwo vorhanden</div></div>
+      </button>
+    </div>
+    <div class="ob-nav">
+      <button class="ob-back" onclick="oGo(0)">←</button>
+      <button class="ob-next" id="on1">Weiter →</button>
+    </div>
+  </div>
+
+  <div class="ob-step" id="os2">
+    <div class="ob-prog"><div class="ob-prog-fill" style="width:40%"></div></div>
+    <div class="ob-step-lbl">Schritt 2 von 5 · Schnelltest</div>
+    <div class="ob-title">Was würdest du hier sagen?</div>
+    <div class="ob-sub">Kein Trick — wir wollen dein erstes Gefühl.</div>
+    <div class="ob-scenario">👵 Deine Tante fragt: <strong>"Ee, ne zaman evleniyorsun sen?"</strong></div>
+    <div class="ob-opts">
+      <button class="ob-opt" onclick="oPick(this,'q2','a',2)">
+        <div class="ob-dot"></div>
+        <div><div>Kısmet, ne bileyim — inşallah yakında!</div><div class="ob-sub2">Warm, ausweichend, natürlich türkisch</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'q2','b',2)">
+        <div class="ob-dot"></div>
+        <div><div>Bilmiyorum, düşünmedim henüz.</div><div class="ob-sub2">Korrekt, aber etwas kalt</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'q2','c',2)">
+        <div class="ob-dot"></div>
+        <div><div>Ben evlenmek istemiyorum.</div><div class="ob-sub2">Direkt und ungewöhnlich hart</div></div>
+      </button>
+      <button class="ob-opt" onclick="oPick(this,'q2','d',2)">
+        <div class="ob-dot"></div>
+        <div><div>Ich wäre hier unsicher</div><div class="ob-sub2">Kein passender Satz würde mir kommen</div></div>
+      </button>
+    </div>
+    <div class="ob-nav">
+      <button class="ob-back" onclick="oGo(1)">←</button>
+      <button class="ob-next" id="on2">Weiter →</button>
+    </div>
+  </div>
+
+  <div class="ob-step" id="os3">
+    <div class="ob-prog"><div class="ob-prog-fill" style="width:60%"></div></div>
+    <div class="ob-step-lbl">Schritt 3 von 5</div>
+    <div class="ob-title">Wo willst du besser werden?</div>
+    <div class="ob-sub">Alles was zutrifft — wir priorisieren deine Schwachstellen.</div>
+    <div class="ob-tiles">
+      <button class="ob-tile" onclick="oTile(this,'g1',3)"><div class="ob-tile-icon">💬</div><div class="ob-tile-name">Flüssig sprechen</div><div class="ob-tile-desc">Ohne lange zu überlegen</div></button>
+      <button class="ob-tile" onclick="oTile(this,'g2',3)"><div class="ob-tile-icon">🎙️</div><div class="ob-tile-name">Aussprache</div><div class="ob-tile-desc">ğ, ı, ö, ü richtig</div></button>
+      <button class="ob-tile" onclick="oTile(this,'g3',3)"><div class="ob-tile-icon">✨</div><div class="ob-tile-name">Natürlich klingen</div><div class="ob-tile-desc">Idiome & echter Slang</div></button>
+      <button class="ob-tile" onclick="oTile(this,'g4',3)"><div class="ob-tile-icon">📚</div><div class="ob-tile-name">Wortschatz</div><div class="ob-tile-desc">Mehr aktiv nutzen</div></button>
+      <button class="ob-tile" onclick="oTile(this,'g5',3)"><div class="ob-tile-icon">💼</div><div class="ob-tile-name">Formelle Sprache</div><div class="ob-tile-desc">Arbeit & Behörden</div></button>
+      <button class="ob-tile" onclick="oTile(this,'g6',3)"><div class="ob-tile-icon">📝</div><div class="ob-tile-name">Grammatik</div><div class="ob-tile-desc">Endungen & Zeitformen</div></button>
+    </div>
+    <div class="ob-nav">
+      <button class="ob-back" onclick="oGo(2)">←</button>
+      <button class="ob-next" id="on3">Weiter →</button>
+    </div>
+  </div>
+
+  <div class="ob-step" id="os4">
+    <div class="ob-prog"><div class="ob-prog-fill" style="width:80%"></div></div>
+    <div class="ob-step-lbl">Schritt 4 von 5</div>
+    <div class="ob-title">Wo brauchst du Türkisch?</div>
+    <div class="ob-sub">Wir passen Themen und Dialoge daran an.</div>
+    <div class="ob-tiles">
+      <button class="ob-tile" onclick="oTile(this,'s1',4)"><div class="ob-tile-icon">🏠</div><div class="ob-tile-name">Familie</div><div class="ob-tile-desc">Eltern, Großeltern</div></button>
+      <button class="ob-tile" onclick="oTile(this,'s2',4)"><div class="ob-tile-icon">🤝</div><div class="ob-tile-name">Freunde</div><div class="ob-tile-desc">Soziale Situationen</div></button>
+      <button class="ob-tile" onclick="oTile(this,'s3',4)"><div class="ob-tile-icon">✈️</div><div class="ob-tile-name">Türkei-Urlaub</div><div class="ob-tile-desc">Reise & Alltag</div></button>
+      <button class="ob-tile" onclick="oTile(this,'s4',4)"><div class="ob-tile-icon">🏢</div><div class="ob-tile-name">Job & Karriere</div><div class="ob-tile-desc">Professionell</div></button>
+      <button class="ob-tile" onclick="oTile(this,'s5',4)"><div class="ob-tile-icon">📺</div><div class="ob-tile-name">Dizi & Kultur</div><div class="ob-tile-desc">Serien verstehen</div></button>
+      <button class="ob-tile" onclick="oTile(this,'s6',4)"><div class="ob-tile-icon">❤️</div><div class="ob-tile-name">Beziehung</div><div class="ob-tile-desc">Auf Türkisch reden</div></button>
+    </div>
+    <div class="ob-nav">
+      <button class="ob-back" onclick="oGo(3)">←</button>
+      <button class="ob-next" id="on4">Weiter →</button>
+    </div>
+  </div>
+
+  <div class="ob-step" id="os5">
+    <div class="ob-prog"><div class="ob-prog-fill" style="width:100%"></div></div>
+    <div class="ob-result">
+      <div class="ob-ring">
+        <div class="ob-ring-val" id="ob-niv">B2</div>
+        <div class="ob-ring-sub">Niveau</div>
+      </div>
+      <div class="ob-r-title syne" id="ob-rtitle">Heritage Speaker</div>
+      <div class="ob-r-desc" id="ob-rdesc">Bereit.</div>
+      <div class="ob-r-cards">
+        <div class="ob-rcard"><div class="ob-rcard-val" id="ob-goal">10 Min</div><div class="ob-rcard-lbl">Tägl. Ziel</div></div>
+        <div class="ob-rcard"><div class="ob-rcard-val" id="ob-foc">Sprechen</div><div class="ob-rcard-lbl">Fokus</div></div>
+        <div class="ob-rcard"><div class="ob-rcard-val">4–6 Wo</div><div class="ob-rcard-lbl">Bis Durchbruch</div></div>
+      </div>
+      <div class="ob-focus-list" id="ob-flist"></div>
+      <button class="ob-enter" onclick="launchApp()">App starten →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MAIN APP -->
+<div id="mainapp">
+  <nav>
+    <div class="logo syne">türk<em>çe</em></div>
+    <div class="nav-links">
+      <button class="nb active" onclick="showScr('home',this)">Home</button>
+      <button class="nb" onclick="showScr('quiz',this)">Quiz</button>
+      <button class="nb" onclick="showScr('chat',this)">Effe</button>
+      <button class="nb" onclick="showScr('pronun',this)">Aussprache</button>
+    </div>
+    <div class="nav-av" id="nav-av">?</div>
+  </nav>
+
+  <!-- HOME -->
+  <div class="scr active" id="scr-home">
+    <div class="profile-bar">
+      <div class="profile-av" id="home-av">?</div>
+      <div class="profile-info">
+        <div class="profile-name">Willkommen zurück! 👋</div>
+        <div class="profile-lv" id="home-lv">Niveau wird berechnet...</div>
+      </div>
+      <div class="profile-xp">
+        <div class="xp-val" id="home-xp">0 XP</div>
+        <div class="xp-lbl">Gesamt</div>
+      </div>
+    </div>
+    <div class="today-card">
+      <div class="today-icon">⚡</div>
+      <div class="today-info">
+        <div class="today-title">Heutiger Fokus: Alltagsdialoge</div>
+        <div class="today-desc">Endlose Situationen aus dem echten Leben — was würde ein Muttersprachler sagen?</div>
+      </div>
+      <button class="today-btn" onclick="showScr('quiz',document.querySelectorAll('.nb')[1])">Starten →</button>
+    </div>
+    <div class="sec-title syne">Deine Module</div>
+    <div class="sec-sub">Fokus auf aktive Sprachproduktion</div>
+    <div class="mods">
+      <div class="mod rc" onclick="showScr('chat',document.querySelectorAll('.nb')[2])">
+        <div class="mod-icon">💬</div>
+        <div class="mod-name syne">Effe · KI-Gespräch</div>
+        <div class="mod-desc">Echte Konversation mit Sofort-Feedback zu Stil, Idiomen und Grammatik.</div>
+        <div class="mod-badge mb-hot">Kernmodul</div>
+      </div>
+      <div class="mod tc" onclick="showScr('pronun',document.querySelectorAll('.nb')[3])">
+        <div class="mod-icon">🎙️</div>
+        <div class="mod-name syne">Aussprache</div>
+        <div class="mod-desc">Satzmelodie, Betonung und typische Deutsch-Türken-Fehler beseitigen.</div>
+        <div class="mod-badge mb-new">KI-Score</div>
+      </div>
+      <div class="mod gc" onclick="showScr('quiz',document.querySelectorAll('.nb')[1])">
+        <div class="mod-icon">⚡</div>
+        <div class="mod-name syne">Dialog-Quiz</div>
+        <div class="mod-desc">Situationen aus dem echten Leben — was würde ein Türke hier sagen?</div>
+        <div class="mod-badge mb-lv" id="quiz-badge">B2–C1</div>
+      </div>
+    </div>
+    <div class="streak-row">
+      <div class="streak-left">
+        <div style="font-size:1.65rem">🔥</div>
+        <div>
+          <div class="streak-count">5 Tage Streak</div>
+          <div class="streak-sub">Heute noch nicht — los!</div>
+        </div>
+      </div>
+      <div class="dots">
+        <div class="dot dd">Mo</div><div class="dot dd">Di</div><div class="dot dd">Mi</div>
+        <div class="dot dd">Do</div><div class="dot dd">Fr</div><div class="dot dt">Sa</div><div class="dot de">So</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="scr" id="scr-quiz">
+    <div id="quiz-select">
+      <div class="sec-title syne">Dialog-Quiz</div>
+      <div class="sec-sub">Wähl eine Situation — was würde ein Türke hier wirklich sagen?</div>
+      <div id="quiz-endless-note" style="font-size:.78rem;color:var(--teal);background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:var(--rs);padding:.55rem .8rem;margin-bottom:.4rem;line-height:1.5"></div>
+      <div class="quiz-cats" id="quiz-cats"></div>
+    </div>
+    <div id="quiz-main" style="display:none">
+      <div style="display:flex;align-items:center;margin-bottom:1rem;gap:.6rem">
+        <button class="q-back" onclick="backToSelect()">←</button>
+        <div class="q-cat-title" id="qcattitle"></div>
+        <div style="font-size:.78rem;color:var(--tx2);margin-left:auto" id="qctr">Frage 1</div>
+        <button class="q-back" id="qfinish" onclick="finishQuiz()">Beenden</button>
+      </div>
+      <div class="q-diff">
+        <span class="q-diff-lbl">Niveau</span>
+        <input type="range" min="1" max="3" step="1" value="2" id="qdiff" oninput="setDiff(this.value)">
+        <span class="q-diff-val" id="qdiffval">Mittel · B1–B2</span>
+      </div>
+      <div class="qprog"><div class="qprog-fill" id="qpf" style="width:16%"></div></div>
+      <div class="qmeta">
+        <div class="q-topic" id="qtopic"></div>
+        <div class="q-lvl" id="qlvl">B2</div>
+      </div>
+      <div class="q-scene" id="qscene" style="display:none">
+        <div class="q-scene-lbl">🎭 Situation</div>
+        <div id="qscenetxt"></div>
+      </div>
+      <div class="q-text" id="qtxt"></div>
+      <div class="q-hint" id="qhint"></div>
+      <div class="q-opts" id="qopts"></div>
+      <div class="q-fb" id="qfb">
+        <div class="fb-title" id="qfbt"></div>
+        <div id="qfbm"></div>
+        <div class="fb-exp" id="qfbe"></div>
+      </div>
+      <div class="q-nav">
+        <div class="xp-pop" id="xppop">+15 XP 🏆</div>
+        <button class="btn-nq" id="qnext" onclick="nextQ()">Weiter →</button>
+      </div>
+    </div>
+    <div class="q-result" id="qresult">
+      <div style="font-size:2rem;margin-bottom:.5rem">🎉</div>
+      <div class="qr-score" id="qrscore"></div>
+      <div class="qr-lbl" id="qrlbl"></div>
+      <div class="qr-badges" id="qrbadges"></div>
+      <button class="btn-restart" onclick="restartQ()">Weiter üben (neue Fragen)</button>
+      <button class="btn-go-chat" onclick="backToSelect()" style="margin-bottom:.7rem">← Andere Situation</button>
+      <button class="btn-go-chat" onclick="showScr('chat',document.querySelectorAll('.nb')[2])">Mit Effe üben →</button>
+    </div>
+  </div>
+
+  <!-- CHAT -->
+  <div class="scr" id="scr-chat">
+    <div class="sec-title syne" style="margin-bottom:.3rem">Gespräch mit Effe</div>
+    <div class="sec-sub">Spricht wie eine echte Türkin — korrigiert sanft aber konsequent</div>
+    <div class="chat-hdr">
+      <div class="effe-av">✨</div>
+      <div>
+        <div class="effe-name">Effe · Konversationspartnerin</div>
+        <div class="effe-status"><span class="effe-dot"></span>Online · <span id="effe-niv">B2–C1</span></div>
+      </div>
+      <div style="margin-left:auto;font-size:.72rem;color:var(--tx3);text-align:right">Stil & Grammatik<br>werden kommentiert</div>
+    </div>
+    <div class="mode-bar">
+      <span class="mode-lbl">Modus</span>
+      <div class="mode-pills">
+        <div class="mpill active" onclick="setMode(this,'normal')">Entspannt</div>
+        <div class="mpill" onclick="setMode(this,'strict')">Streng</div>
+        <div class="mpill" onclick="setMode(this,'roleplay')">Rollenspiel</div>
+        <div class="mpill" onclick="setMode(this,'slang')">Slang-only</div>
+      </div>
+    </div>
+    <div class="tpills">
+      <div class="tpill active" onclick="setTopic(this,'iş hayatı ve kariyer')">💼 İş</div>
+      <div class="tpill" onclick="setTopic(this,'aile dinamikleri')">👨‍👩‍👧 Aile</div>
+      <div class="tpill" onclick="setTopic(this,'arkadaşlık ve sosyal hayat')">🤝 Sosyal</div>
+      <div class="tpill" onclick="setTopic(this,'güncel olaylar')">📰 Gündem</div>
+      <div class="tpill" onclick="setTopic(this,'türk kültürü')">🌙 Kültür</div>
+      <div class="tpill" onclick="setTopic(this,'tartışma ve fikirler')">💡 Tartışma</div>
+    </div>
+    <div class="msgs" id="chatmsgs">
+      <div class="msg ai">
+        <div class="mbub">Ya, merhaba! Ben Effe. ✨<br><br>Seninle gerçek Türkçe konuşmak için buradayım — doğal, modern, akıcı. Hadi başlayalım! Bugün ne hakkında konuşmak istersin?</div>
+        <div class="mtime">Jetzt</div>
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-ta" id="chatta" placeholder="Türkçe yaz — Effe antwortet wie ein echter Mensch..." rows="1" onkeydown="chatKey(event)" oninput="chatResize(this)"></textarea>
+      <button class="chat-send" id="chatsend" onclick="chatSend()">➤</button>
+    </div>
+    <div class="chat-footer">Effe erkennt Germanismen, Register-Fehler & unnatürliche Formulierungen · Powered by Claude Sonnet 4.6</div>
+  </div>
+
+  <!-- PRONUN -->
+  <div class="scr" id="scr-pronun">
+    <div class="sec-title syne" style="margin-bottom:.3rem">Aussprache & Intonation</div>
+    <div class="sec-sub">Nicht nur Laute — natürlich und fließend klingen</div>
+    <div class="pw-card">
+      <div class="pw-word" id="pww">Geçmiş olsun</div>
+      <div class="pw-phon" id="pwph">[geʧ.miʃ ol.sun]</div>
+      <div class="pw-de" id="pwde">Gute Besserung / Das tut mir leid</div>
+      <div class="pw-ctx" id="pwctx">Wenn jemand krank ist, gestürzt ist oder Pech hatte</div>
+    </div>
+    <div class="pr-tip">
+      <div class="pr-tip-lbl">💡 Deutsch-Türken-Tipp</div>
+      <div id="pwtip">Das "G" am Anfang ist weich und kurz. Die Betonung liegt auf "ol<strong style="color:var(--gold2)">SUN</strong>". Im echten Gespräch spricht man es fast als ein Wort: "geçmişolsun".</div>
+    </div>
+    <div class="pr-ctls">
+      <button class="pr-btn play" onclick="prPlay()">▶ Anhören</button>
+      <button class="pr-btn rec" id="prrec" onclick="prToggle(this)">⏺ Nachsprechen</button>
+      <button class="pr-btn nxt" onclick="prNext()">Nächste Phrase →</button>
+    </div>
+    <div class="wf-wrap">
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+        <div style="flex:1;min-width:120px"><div class="wf-lbl">Original</div><div class="wf" id="wfn"></div></div>
+        <div style="flex:1;min-width:120px"><div class="wf-lbl">Deine Version</div><div class="wf" id="wfu"></div></div>
+      </div>
+      <div class="sc-row" id="scrow" style="display:none">
+        <div class="sc-ring">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#21262D" stroke-width="6"/>
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#00B4D8" stroke-width="6" stroke-dasharray="163" stroke-dashoffset="50" id="scarc" stroke-linecap="round"/>
+          </svg>
+          <div class="sc-val" id="scval">—</div>
+        </div>
+        <div class="sc-details">
+          <div class="sc-det"><span>Aussprache</span><span id="sc1">—</span></div>
+          <div class="sc-det"><span>Betonung</span><span id="sc2">—</span></div>
+          <div class="sc-det"><span>Redefluss</span><span id="sc3">—</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-title syne" style="font-size:1rem;margin-top:.5rem;margin-bottom:.5rem">Schwierige Phrasen</div>
+    <div class="ch-list" id="chlist"></div>
+  </div>
+</div>
+
+<script>
+// ── STATE ──
+let apiKey = localStorage.getItem('tc_api_key') || '';
+const oAns = {}, oTiles = new Set();
+let profile = {};
+let totalXP = 0;
+
+// ── API KEY MODAL ──
+window.addEventListener('DOMContentLoaded', () => {
+  if (apiKey) {
+    document.getElementById('api-modal').style.display = 'none';
+  }
+  buildWF('wfn', false);
+  buildWF('wfu', false);
+});
+function saveApiKey() {
+  const val = document.getElementById('api-key-input').value.trim();
+  if (!val.startsWith('sk-')) { alert('Bitte einen gültigen Anthropic API Key eingeben (beginnt mit sk-)'); return; }
+  apiKey = val;
+  localStorage.setItem('tc_api_key', val);
+  document.getElementById('api-modal').style.display = 'none';
+}
+function skipApiKey() {
+  document.getElementById('api-modal').style.display = 'none';
+}
+
+// ── ONBOARDING ──
+function oGo(n) {
+  document.querySelectorAll('.ob-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('os' + n).classList.add('active');
+  if (n === 5) buildObResult();
+}
+function oPick(el, k, v, step) {
+  el.closest('.ob-opts').querySelectorAll('.ob-opt').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  oAns[k] = v;
+  const nb = document.getElementById('on' + step);
+  if (nb) { nb.classList.add('on'); nb.onclick = () => oGo(step + 1); }
+}
+function oTile(el, k, step) {
+  el.classList.toggle('sel');
+  if (el.classList.contains('sel')) oTiles.add(k); else oTiles.delete(k);
+  const nb = document.getElementById('on' + step);
+  if (nb) {
+    if (oTiles.size > 0) { nb.classList.add('on'); nb.onclick = () => oGo(step + 1); }
+    else nb.classList.remove('on');
+  }
+}
+function buildObResult() {
+  const lv = oAns['lv'] || 'a';
+  let niveau = 'B2', rtitle = 'Heritage Speaker — aktive Phase', rdesc = 'Du verstehst alles. Jetzt bauen wir deine aktive Sprachproduktion auf — mit echten Gesprächen, nicht Lückentexten.';
+  if (lv === 'c') { niveau = 'C1'; rtitle = 'Fortgeschritten — Feinschliff'; rdesc = 'Du kannst dich gut unterhalten. Wir arbeiten an Idiomen, natürlichem Klang und Register-Sicherheit.'; }
+  else if (lv === 'd') { niveau = 'A2–B1'; rtitle = 'Reaktivierungsphase'; rdesc = 'Grundlagen sind da — wir wecken sie auf. Effe führt dich Schritt für Schritt zurück ins Türkische.'; }
+  document.getElementById('ob-niv').textContent = niveau;
+  document.getElementById('ob-rtitle').textContent = rtitle;
+  document.getElementById('ob-rdesc').textContent = rdesc;
+  const gmap = { g1: 'Sprechen', g2: 'Aussprache', g3: 'Natürlichkeit', g4: 'Wortschatz', g5: 'Formell', g6: 'Grammatik' };
+  const fg = Array.from(oTiles).find(k => k.startsWith('g'));
+  document.getElementById('ob-foc').textContent = fg ? gmap[fg] : 'Sprechen';
+  const focItems = [
+    { k: 'g1', icon: '💬', l: 'Gesprächsfluss', d: 'Täglich 1 Thema mit Effe' },
+    { k: 'g2', icon: '🎙️', l: 'Aussprache', d: 'ğ, ı, ö, ü + Satzmelodie' },
+    { k: 'g3', icon: '✨', l: 'Natürlicher Klang', d: 'Idiome, Slang, Redewendungen' },
+    { k: 'g4', icon: '📚', l: 'Wortschatz', d: 'Aktiver Wortschatz aufbauen' },
+    { k: 'g5', icon: '💼', l: 'Formelle Sprache', d: 'Register-Sicherheit im Job' },
+    { k: 'g6', icon: '📝', l: 'Grammatik', d: 'Endungen & Zeitformen festigen' },
+  ];
+  const sel = focItems.filter(f => oTiles.has(f.k));
+  const list = document.getElementById('ob-flist');
+  list.innerHTML = '';
+  (sel.length ? sel.slice(0, 3) : focItems.slice(0, 2)).forEach(f => {
+    const d = document.createElement('div'); d.className = 'ob-focus-item';
+    d.innerHTML = `<div class="ob-focus-icon">${f.icon}</div><div><div class="ob-focus-lbl">${f.l}</div><div style="font-size:11px;color:var(--tx3)">${f.d}</div></div>`;
+    list.appendChild(d);
+  });
+  profile = { niveau, goals: Array.from(oTiles), lv };
+}
+function launchApp() {
+  document.getElementById('onboarding').style.display = 'none';
+  document.getElementById('mainapp').style.display = 'flex';
+  const init = profile.niveau ? profile.niveau.slice(0, 1) : 'B';
+  document.getElementById('home-av').textContent = init;
+  document.getElementById('nav-av').textContent = init;
+  document.getElementById('home-lv').textContent = 'Niveau ' + (profile.niveau || 'B2') + ' · Heritage Speaker';
+  document.getElementById('effe-niv').textContent = profile.niveau || 'B2';
+  document.getElementById('quiz-badge').textContent = profile.niveau || 'B2–C1';
+  buildQuizSelect();
+  buildChList();
+}
+
+// ── QUIZ ──
+const quizzes = {
+  freunde: {
+    name: 'Alltag mit Freunden', icon: '🤝', cls: 'c-freunde', lvl: 'B1–C1',
+    desc: 'Locker, mit Slang und echtem Kumpel-Ton.',
+    questions: [
+      { lv: 'B1', topic: 'Slang · Begrüßung',
+        scene: 'Dein Kumpel schreibt dir: "Naberrr, n\'apıyosun?"', sceneTr: 'Kankan sana yazıyor: "Naberrr, n\'apıyosun?"',
+        q: 'Wie antwortest du locker — wie unter Freunden?', qTr: 'Nasıl rahat cevap verirsin — arkadaşça?',
+        hint: 'Schulbuch-Türkisch wäre hier komplett fehl am Platz', hintTr: 'Burada kitabi Türkçe hiç uymaz',
+        opts: ['İyiyim, teşekkür ederim. Siz nasılsınız?', 'İyilik, senden naber? Takılıyorum işte.', 'Çok iyiyim, her şey yolunda efendim.', 'Maalesef pek iyi değilim bugün.'],
+        optsDe: ['Mir geht\'s gut, danke. Wie geht es Ihnen?', 'Alles gut, was geht bei dir? Chill grad einfach.', 'Mir geht\'s sehr gut, alles bestens, mein Herr.', 'Leider geht\'s mir heute nicht so gut.'],
+        c: 1,
+        fb: '"İyilik, senden naber? Takılıyorum işte" — locker, echt, genau wie unter Kumpels.', fbTr: '"İyilik, senden naber? Takılıyorum işte" — rahat, samimi, tam kanka ağzı.',
+        ex: '"Takılmak" = chillen/abhängen. A und C sind die Sie-Form (viel zu förmlich). "Efendim" sagt man nicht zum Kumpel.', exTr: '"Takılmak" = boş boş gezmek/dinlenmek. A ve C "siz" hitabı (çok resmi). "Efendim" arkadaşa denmez.' },
+      { lv: 'B1', topic: 'Plan machen',
+        scene: null, sceneTr: null,
+        q: 'Du willst heute Abend was mit Freunden machen. Wie schlägst du es vor?', qTr: 'Bu akşam arkadaşlarınla bir şey yapmak istiyorsun. Nasıl teklif edersin?',
+        hint: 'Endung -alım/-elim = "lass uns ..."', hintTr: '-alım/-elim eki = "hadi ... yapalım"',
+        opts: ['Bu akşam buluşuyoruz.', 'Bu akşam buluşacağım.', 'Hadi bu akşam buluşalım!', 'Bu akşam buluşur musun?'],
+        optsDe: ['Wir treffen uns heute Abend.', 'Ich werde mich heute Abend treffen.', 'Komm, lass uns heute Abend treffen!', 'Triffst du dich heute Abend?'],
+        c: 2,
+        fb: '"Hadi ... buluşalım!" ist die natürliche Aufforderung: "Komm, lass uns heute Abend treffen!"', fbTr: '"Hadi ... buluşalım!" en doğal teklif: "Hadi bu akşam buluşalım!"',
+        ex: '"-alım/-elim" heißt "lass uns". A ist Präsens (wir treffen uns), B nur "ich werde", D klingt zögerlich.', exTr: '"-alım/-elim" = "hadi yapalım". A şimdiki zaman, B sadece "ben", D çekingen durur.' },
+      { lv: 'C1', topic: 'Slang · Reaktion',
+        scene: null, sceneTr: null,
+        q: 'Dein Freund hat die Prüfung bestanden. Wie reagierst du natürlich?', qTr: 'Arkadaşın sınavı geçti. Nasıl doğal tepki verirsin?',
+        hint: 'Echte Umgangssprache — kein Schulbuch', hintTr: 'Gerçek günlük dil — kitabi değil',
+        opts: ['Tebrik ederim, bu güzel bir haber.', 'Vay be! Helal lan, efsanesin ya!', 'Seni tebrik ediyorum, başarılı oldun.', 'Aferin sana, iyi iş çıkardın.'],
+        optsDe: ['Glückwunsch, das ist eine schöne Nachricht.', 'Wow! Respekt Alter, du bist legendär!', 'Ich gratuliere dir, du warst erfolgreich.', 'Bravo, gut gemacht.'],
+        c: 1,
+        fb: '"Vay be! Helal lan!" — so feiern echte Kumpels mit. Enthusiastisch, mit Slang.', fbTr: '"Vay be! Helal lan!" — gerçek kankalar böyle sevinir. Coşkulu, argolu.',
+        ex: '"Vay be" = Wow, "helal (lan)" = Respekt/stark. A und C klingen wie eine Büro-Mail. "Aferin" sagt man eher zu Kindern.', exTr: '"Vay be" = vay canına, "helal (lan)" = eline sağlık/saygı. A ve C iş maili gibi. "Aferin" daha çok çocuğa denir.' },
+      { lv: 'B2', topic: 'Slang · Neugier',
+        scene: 'Dein Kumpel will dir was richtig Spannendes erzählen.', sceneTr: 'Kankan sana çok ilginç bir şey anlatacak.',
+        q: 'Wie zeigst du locker, dass du gespannt bist?', qTr: 'Merak ettiğini nasıl rahatça gösterirsin?',
+        hint: 'Unter Freunden darf "lan" rein — locker und neugierig', hintTr: 'Arkadaşta "lan" olur — rahat ve meraklı',
+        opts: ['Lütfen devam ediniz.', 'Hadi anlat lan, çok merak ettim!', 'Devam etmenizi rica ederim.', 'Anlatma, ilgilenmiyorum.'],
+        optsDe: ['Bitte fahren Sie fort.', 'Komm, erzähl Alter, ich bin total gespannt!', 'Ich bitte Sie fortzufahren.', 'Erzähl nicht, interessiert mich nicht.'],
+        c: 1,
+        fb: '"Hadi anlat lan, çok merak ettim!" zeigt echtes, lockeres Interesse unter Kumpels.', fbTr: '"Hadi anlat lan, çok merak ettim!" gerçek, rahat bir ilgi gösterir.',
+        ex: 'A und C sind die höfliche Sie-Form (viel zu steif), D wäre unhöflich und desinteressiert.', exTr: 'A ve C kibar "siz" formu (çok resmi), D kaba ve ilgisiz olurdu.' },
+      { lv: 'B2', topic: 'Sosyal · Absagen',
+        scene: 'Freunde wollen heute ausgehen, du bist aber komplett platt.', sceneTr: 'Arkadaşların bu akşam çıkmak istiyor ama sen çok yorgunsun.',
+        q: 'Wie sagst du locker ab, ohne unhöflich zu sein?', qTr: 'Kaba olmadan nasıl rahatça reddedersin?',
+        hint: 'Unter Freunden darf\'s entspannt sein', hintTr: 'Arkadaş arasında rahat olabilir',
+        opts: ['Hayır, gelmiyorum.', 'Ya bugün çok yorgunum, kafam dağınık — bi dahakine kesin varım!', 'Maalesef katılamayacağım, müsait değilim.', 'Bilmiyorum, belki.'],
+        optsDe: ['Nein, ich komme nicht.', 'Ey, ich bin heute total müde, mein Kopf ist durch — nächstes Mal aber sicher dabei!', 'Leider kann ich nicht teilnehmen, ich bin nicht verfügbar.', 'Weiß nicht, vielleicht.'],
+        c: 1,
+        fb: '"Bi dahakine kesin varım!" macht aus dem Nein ein warmes "nächstes Mal aber sicher".', fbTr: '"Bi dahakine kesin varım!" hayırı sıcak bir "gelecek sefer kesin" haline getirir.',
+        ex: '"Bi dahakine" = beim nächsten Mal, "varım" = ich bin dabei. A ist abrupt, C zu förmlich, D unverbindlich.', exTr: '"Bi dahakine" = gelecek sefere, "varım" = ben varım. A sert, C fazla resmi, D belirsiz.' },
+      { lv: 'C1', topic: 'Deyim · Trösten',
+        scene: 'Dein Freund ärgert sich über eine Kleinigkeit.', sceneTr: 'Arkadaşın küçük bir şeye sinirleniyor.',
+        q: 'Wie sagst du ihm locker, er soll es lassen?', qTr: 'Ona nasıl rahatça "boş ver" dersin?',
+        hint: '"boş ver" + "takma kafana" = "lass es, mach dir keinen Kopf"', hintTr: '"boş ver" + "takma kafana" = bırak, dert etme',
+        opts: ['Boş ver ya, takma kafana!', 'Bu konuyu ciddiye almalısın.', 'Lütfen sakin olunuz.', 'Bence haklısın, çok önemli.'],
+        optsDe: ['Lass mal, mach dir keinen Kopf!', 'Du solltest das ernst nehmen.', 'Bitte beruhigen Sie sich.', 'Ich finde du hast recht, das ist sehr wichtig.'],
+        c: 0,
+        fb: '"Boş ver ya, takma kafana!" — genau das sagt man, um einen Kumpel zu beruhigen.', fbTr: '"Boş ver ya, takma kafana!" — bir kankayı sakinleştirmek için tam böyle denir.',
+        ex: 'B macht es größer, C ist Sie-Form/steif, D bestätigt den Ärger noch.', exTr: 'B olayı büyütür, C resmi/soğuk, D sinirini daha da haklı çıkarır.' },
+    ],
+  },
+  familie: {
+    name: 'Alltag mit Familie', icon: '👨‍👩‍👧', cls: 'c-familie', lvl: 'B1–C1',
+    desc: 'Herzlich und respektvoll — mit den richtigen Verwandtschaftswörtern.',
+    questions: [
+      { lv: 'B2', topic: 'Sosyal · Alltag',
+        scene: 'Deine Teyze fragt: "Ee, ne zaman evleniyorsun sen?"', sceneTr: 'Teyzen soruyor: "Ee, ne zaman evleniyorsun sen?"',
+        q: 'Was antwortest du — natürlich und nicht unhöflich?', qTr: 'Ne cevap verirsin — doğal ve kırıcı olmadan?',
+        hint: '"Kısmet" / "inşallah yakında" sind typische Ausweichantworten', hintTr: '"Kısmet" / "inşallah yakında" tipik geçiştirme cevaplarıdır',
+        opts: ['Kısmet, ne bileyim — inşallah yakında!', 'Ben evlenmek istemiyorum.', 'Bilmiyorum, düşünmedim henüz doğrusu.', 'Bu soruyu sormak doğru değil.'],
+        optsDe: ['Schicksal, was weiß ich — so Gott will bald!', 'Ich will nicht heiraten.', 'Weiß nicht, ehrlich gesagt habe ich noch nicht drüber nachgedacht.', 'Diese Frage zu stellen gehört sich nicht.'],
+        c: 0,
+        fb: '"Kısmet, inşallah yakında!" ist warm, ausweichend und klingt komplett nativ.', fbTr: '"Kısmet, inşallah yakında!" sıcak, geçiştiren ve tamamen doğal.',
+        ex: 'A ist kulturell genau richtig. B zu direkt, C korrekt aber kalt, D unhöflich.', exTr: 'A kültürel olarak tam yerinde. B fazla direkt, C doğru ama soğuk, D kaba.' },
+      { lv: 'B1', topic: 'Verwandtschaft',
+        scene: 'Du sprichst über die Schwester deiner Mutter.', sceneTr: 'Annenin kız kardeşinden bahsediyorsun.',
+        q: 'Wie nennst du sie?', qTr: 'Ona ne dersin?',
+        hint: 'Türkisch unterscheidet mütterliche und väterliche Seite', hintTr: 'Türkçede anne tarafı ile baba tarafı ayrıdır',
+        opts: ['hala', 'teyze', 'yenge', 'abla'],
+        optsDe: ['Tante (Schwester des Vaters)', 'Tante (Schwester der Mutter)', 'angeheiratete Tante', 'ältere Schwester'],
+        c: 1,
+        fb: '"Teyze" = Tante mütterlicherseits (Schwester der Mutter).', fbTr: '"Teyze" = annenin kız kardeşi.',
+        ex: '"Hala" = Schwester des Vaters, "yenge" = angeheiratete Tante (Frau des Onkels), "abla" = ältere Schwester.', exTr: '"Hala" = babanın kız kardeşi, "yenge" = amca/dayı eşi, "abla" = büyük kız kardeş.' },
+      { lv: 'B1', topic: 'Telefon · Oma',
+        scene: 'Du rufst deine Büyükanne an. Sie geht ran.', sceneTr: 'Büyükanneni arıyorsun. Telefonu açıyor.',
+        q: 'Wie begrüßt du sie herzlich am Telefon?', qTr: 'Telefonda onu nasıl sıcak bir şekilde selamlarsın?',
+        hint: 'Das Suffix "-ciğim" macht es liebevoll', hintTr: '"-ciğim" eki sevgi katar',
+        opts: ['Alo, kimsiniz?', 'İyi günler, ben arıyorum.', 'Canım büyükanneciğim, nasılsın? Çok özledim seni!', 'Selam, n\'aber?'],
+        optsDe: ['Hallo, wer ist da?', 'Guten Tag, ich rufe an.', 'Meine liebe Omi, wie geht\'s dir? Ich hab dich sehr vermisst!', 'Hi, was geht?'],
+        c: 2,
+        fb: '"Canım büyükanneciğim... çok özledim seni!" — herzlich und genau richtig für die Oma.', fbTr: '"Canım büyükanneciğim... çok özledim seni!" — sıcak ve büyükanneye tam uygun.',
+        ex: '"Canım" = mein Schatz, "-ciğim" macht es liebevoll. A klingt wie bei einem Fremden, D ist zu salopp für die Oma.', exTr: '"Canım" = canım, "-ciğim" sevgi katar. A yabancıya der gibi, D büyükanneye fazla laubali.' },
+      { lv: 'B2', topic: 'Sosyal · Ablehnen',
+        scene: 'Deine Teyze lädt dich zum Essen ein. Du kannst wirklich nicht.', sceneTr: 'Teyzen seni yemeğe davet ediyor. Ama gerçekten gelemezsin.',
+        q: 'Wie lehnst du höflich ab, ohne sie zu verletzen?', qTr: 'Onu kırmadan nasıl kibarca reddedersin?',
+        hint: 'Türkisch ist direkter als Deutsch — aber trotzdem warm', hintTr: 'Türkçe Almancadan daha direkt — ama yine de sıcak',
+        opts: ['Hayır, gelemiyorum.', 'Çok isterdim ama bu akşam gerçekten olmaz, teyzeciğim. Yakında mutlaka gelirim!', 'Üzgünüm, maalesef gelemeyeceğim bu akşam.', 'Bilmiyorum, belki gelirim.'],
+        optsDe: ['Nein, ich kann nicht kommen.', 'Ich würde so gern, aber heute Abend geht es wirklich nicht, liebe Teyze. Bald komme ich ganz bestimmt!', 'Es tut mir leid, ich kann heute Abend leider nicht kommen.', 'Weiß nicht, vielleicht komme ich.'],
+        c: 1,
+        fb: '"Çok isterdim ama..." + "teyzeciğim" + Versprechen — warm und trotzdem klar Nein.', fbTr: '"Çok isterdim ama..." + "teyzeciğim" + söz — sıcak ama net bir hayır.',
+        ex: '"-ciğim" macht "teyze" herzlich. A zu abrupt, C kalt, D respektlos-unverbindlich.', exTr: '"-ciğim" "teyze"yi sıcaklaştırır. A sert, C soğuk, D saygısız-belirsiz.' },
+      { lv: 'B2', topic: 'Gute Besserung',
+        scene: 'Dein Amca (Onkel) hatte eine kleine OP. Du besuchst ihn.', sceneTr: 'Amcan küçük bir ameliyat geçirdi. Onu ziyaret ediyorsun.',
+        q: 'Was sagst du beim Reinkommen?', qTr: 'İçeri girerken ne dersin?',
+        hint: 'Eine feste Formel für Krankheit / Pech', hintTr: 'Hastalık / talihsizlik için kalıp bir ifade',
+        opts: ['Tebrikler amca!', 'Geçmiş olsun amca, nasılsın şimdi?', 'Güle güle amca.', 'Afiyet olsun amca.'],
+        optsDe: ['Glückwunsch, Onkel!', 'Gute Besserung, Onkel, wie geht\'s dir jetzt?', 'Auf Wiedersehen, Onkel.', 'Guten Appetit, Onkel.'],
+        c: 1,
+        fb: '"Geçmiş olsun" = Gute Besserung. Mit "amca" + Nachfrage genau richtig.', fbTr: '"Geçmiş olsun" = geçmiş olsun dileği. "Amca" + hatır sorma ile tam yerinde.',
+        ex: '"Tebrikler" = Glückwunsch (passt nicht), "güle güle" sagt man beim Abschied, "afiyet olsun" = guten Appetit.', exTr: '"Tebrikler" = kutlama (uymaz), "güle güle" vedalaşmada, "afiyet olsun" = yemekte denir.' },
+      { lv: 'C1', topic: 'Register · Respekt',
+        scene: 'Du willst deine Oma respektvoll fragen, wie es ihr geht.', sceneTr: 'Büyükannene saygıyla nasıl olduğunu sormak istiyorsun.',
+        q: 'Welche Form ist hier am natürlichsten und respektvoll?', qTr: 'Burada en doğal ve saygılı ifade hangisi?',
+        hint: 'Zu Älteren: Höflichkeitsform, aber warm', hintTr: 'Büyüklere: saygı formu, ama sıcak',
+        opts: ['Nasılsın lan?', 'İyi misin?', 'Nasılsınız büyükanne, sağlığınız nasıl?', 'Naber büyükanne?'],
+        optsDe: ['Wie geht\'s dir, Alter?', 'Geht\'s dir gut?', 'Wie geht es Ihnen, Oma, wie ist Ihre Gesundheit?', 'Was geht, Oma?'],
+        c: 2,
+        fb: 'Die Sie-Form "-sınız" + Frage nach der Gesundheit zeigt Respekt — ohne steif zu wirken.', fbTr: '"-sınız" saygı formu + sağlık sorusu saygı gösterir — hem de soğuk olmadan.',
+        ex: '"lan" (A) ist Slang/unhöflich, B und D zu salopp für die Oma. Bei Älteren bleibt man bei der höflichen Form.', exTr: '"lan" (A) argo/kaba, B ve D büyükanneye fazla laubali. Büyüklerde saygı formu kullanılır.' },
+    ],
+  },
+  restaurant: {
+    name: 'Im Restaurant', icon: '🍽️', cls: 'c-restaurant', lvl: 'A2–B2',
+    desc: 'Bestellen, nachfragen, loben und zahlen.',
+    questions: [
+      { lv: 'B1', topic: 'Bestellen',
+        scene: 'Der Kellner kommt an den Tisch.', sceneTr: 'Garson masaya geliyor.',
+        q: 'Wie fragst du höflich nach der Speisekarte?', qTr: 'Menüyü nasıl kibarca istersin?',
+        hint: '"menü" / "mönü" — beides ok', hintTr: '"menü" / "mönü" — ikisi de olur',
+        opts: ['Menü ver.', 'Menüyü alabilir miyim, lütfen?', 'Yemek nerede?', 'Ne var burada?'],
+        optsDe: ['Gib die Karte.', 'Könnte ich die Karte haben, bitte?', 'Wo ist das Essen?', 'Was gibt es hier?'],
+        c: 1,
+        fb: '"Menüyü alabilir miyim, lütfen?" = "Könnte ich die Karte haben, bitte?" — höflich und natürlich.', fbTr: '"Menüyü alabilir miyim, lütfen?" — kibar ve doğal.',
+        ex: 'A ist ein Befehl (unhöflich), C und D klingen ruppig. "-abilir miyim" ist die höfliche "könnte ich"-Form.', exTr: 'A emir (kaba), C ve D kaba durur. "-abilir miyim" kibar "alabilir miyim" formudur.' },
+      { lv: 'A2', topic: 'Çay bestellen',
+        scene: null, sceneTr: null,
+        q: 'Du möchtest zwei Tee bestellen. Was sagst du?', qTr: 'İki çay söylemek istiyorsun. Ne dersin?',
+        hint: 'Höflich mit "-abilir miyiz"', hintTr: 'Kibarca "-abilir miyiz" ile',
+        opts: ['İki çay alabilir miyiz?', 'İki kahve lütfen.', 'Çay yok mu?', 'Bir su istiyorum.'],
+        optsDe: ['Könnten wir zwei Tee haben?', 'Zwei Kaffee bitte.', 'Gibt es keinen Tee?', 'Ich möchte ein Wasser.'],
+        c: 0,
+        fb: '"İki çay alabilir miyiz?" = "Könnten wir zwei Tee haben?" Einfach und korrekt.', fbTr: '"İki çay alabilir miyiz?" — basit ve doğru.',
+        ex: '"-abilir miyiz" = "könnten wir". B bestellt Kaffee, C/D passen nicht. Man sagt meist einfach "iki çay".', exTr: '"-abilir miyiz" = "alabilir miyiz". B kahve, C/D uymaz. Genelde sadece "iki çay" denir.' },
+      { lv: 'B1', topic: 'Das Gleiche',
+        scene: 'Dein Freund bestellt İskender. Du willst dasselbe.', sceneTr: 'Arkadaşın İskender söylüyor. Sen de aynısını istiyorsun.',
+        q: 'Wie sagst du "Ich nehme das Gleiche"?', qTr: '"Ben de aynısını alayım" nasıl denir?',
+        hint: '"aynı" = gleich · "aynısından" = von demselben', hintTr: '"aynı" = aynı · "aynısından" = aynısından',
+        opts: ['Ben de aynısından alayım.', 'Ben farklı bir şey istiyorum.', 'Aynı değil, başka.', 'Bana da bir şey getir.'],
+        optsDe: ['Ich nehme auch dasselbe.', 'Ich möchte etwas anderes.', 'Nicht das Gleiche, was anderes.', 'Bring mir auch irgendwas.'],
+        c: 0,
+        fb: '"Ben de aynısından alayım" = "Ich nehme auch dasselbe." Klingt entspannt und nativ.', fbTr: '"Ben de aynısından alayım" — rahat ve doğal.',
+        ex: '"aynısından" = von demselben, "-ayım" = "ich nehme mal". B will was anderes, C verneint, D ist vage/ruppig.', exTr: '"aynısından" = aynısından, "-ayım" = "alayım". B başka ister, C reddeder, D belirsiz/kaba.' },
+      { lv: 'B1', topic: 'Nachfragen',
+        scene: 'Du isst kein Fleisch und willst sichergehen.', sceneTr: 'Et yemiyorsun ve emin olmak istiyorsun.',
+        q: 'Wie fragst du, ob in einem Gericht Fleisch ist?', qTr: 'Bir yemekte et olup olmadığını nasıl sorarsın?',
+        hint: '"içinde" = darin · "et" = Fleisch', hintTr: '"içinde" = içinde · "et" = et',
+        opts: ['Bu et mi?', 'İçinde et var mı?', 'Et nerede?', 'Etsiz mi?'],
+        optsDe: ['Ist das Fleisch?', 'Ist Fleisch drin?', 'Wo ist das Fleisch?', 'Ist es ohne Fleisch?'],
+        c: 1,
+        fb: '"İçinde et var mı?" = "Ist da Fleisch drin?" — die klare, natürliche Frage.', fbTr: '"İçinde et var mı?" — net ve doğal soru.',
+        ex: '"var mı?" = "gibt es?". A fragt nur "Ist das Fleisch?", D ("ist es fleischlos?") geht zwar, ist aber weniger eindeutig.', exTr: '"var mı?" = "var mı?". A sadece "bu et mi?" der, D ("etsiz mi?") olur ama daha az net.' },
+      { lv: 'B2', topic: 'Kompliment',
+        scene: 'Du warst bei Freunden eingeladen und das Essen war top.', sceneTr: 'Arkadaşlara davetliydin ve yemek harikaydı.',
+        q: 'Was sagst du zur Gastgeberin, die gekocht hat?', qTr: 'Yemeği yapan ev sahibine ne dersin?',
+        hint: 'Es gibt eine feste Formel fürs Loben des Kochs', hintTr: 'Aşçıyı övmek için kalıp bir ifade var',
+        opts: ['Afiyet olsun!', 'Teşekkürler, doydum.', 'Elinize sağlık, çok lezzetliydi!', 'Hesap, lütfen.'],
+        optsDe: ['Guten Appetit!', 'Danke, ich bin satt.', 'Gesegnete Hände, es war sehr lecker!', 'Die Rechnung, bitte.'],
+        c: 2,
+        fb: '"Elinize sağlık!" (wörtl. "Gesundheit für Ihre Hände") ist DAS Kompliment an den Koch.', fbTr: '"Elinize sağlık!" aşçıya yapılan en güzel iltifat.',
+        ex: '"Afiyet olsun" sagt der Gastgeber zu dir (guten Appetit), "hesap lütfen" passt nur im Lokal.', exTr: '"Afiyet olsun" ev sahibi sana der, "hesap lütfen" sadece lokantada uyar.' },
+      { lv: 'B1', topic: 'Bezahlen',
+        scene: 'Ihr seid fertig und wollt zahlen.', sceneTr: 'Yemeğiniz bitti ve ödemek istiyorsunuz.',
+        q: 'Wie bittest du um die Rechnung?', qTr: 'Hesabı nasıl istersin?',
+        hint: '"hesap" = Rechnung', hintTr: '"hesap" = hesap',
+        opts: ['Para nerede?', 'Hesabı alabilir miyiz, lütfen?', 'Ne kadar borç?', 'Bitti mi?'],
+        optsDe: ['Wo ist das Geld?', 'Könnten wir die Rechnung haben, bitte?', 'Wie viel Schulden?', 'Ist es vorbei?'],
+        c: 1,
+        fb: '"Hesabı alabilir miyiz, lütfen?" = "Könnten wir die Rechnung haben, bitte?"', fbTr: '"Hesabı alabilir miyiz, lütfen?" — kibar hesap isteme.',
+        ex: '"hesap" = Rechnung. C ("wie viel Schuld?") ist ruppig, A und D passen nicht.', exTr: '"hesap" = hesap. C ("ne kadar borç?") kaba, A ve D uymaz.' },
+    ],
+  },
+  urlaub: {
+    name: 'Türkei-Urlaub', icon: '✈️', cls: 'c-urlaub', lvl: 'A2–B2',
+    desc: 'Taxi, Basar, nach dem Weg fragen, Hotel.',
+    questions: [
+      { lv: 'A2', topic: 'Taxi',
+        scene: 'Du steigst am Flughafen in Antalya in ein Taxi.', sceneTr: 'Antalya havalimanında bir taksiye biniyorsun.',
+        q: 'Wie sagst du, wohin du willst (zum Hotel)?', qTr: 'Nereye gitmek istediğini nasıl söylersin (otele)?',
+        hint: '"-e/-a" zeigt das Ziel · Ziel + "lütfen"', hintTr: '"-e/-a" yönelme eki · hedef + "lütfen"',
+        opts: ['Otele, lütfen.', 'Otel istiyorum.', 'Otele gitmek var mı?', 'Sen otele git.'],
+        optsDe: ['Zum Hotel, bitte.', 'Ich will Hotel.', 'Gibt es Zum-Hotel-Fahren?', 'Fahr du zum Hotel.'],
+        c: 0,
+        fb: '"Otele, lütfen." — kurz, klar und genau richtig im Taxi.', fbTr: '"Otele, lütfen." — kısa, net ve takside tam doğru.',
+        ex: '"-e" zeigt das Ziel (otel→otele). B klingt holprig, C ist kein gutes Türkisch, D befiehlt dem Fahrer falsch.', exTr: '"-e" eki hedefi gösterir (otel→otele). B devrik, C bozuk, D şoföre yanlış emir verir.' },
+      { lv: 'B1', topic: 'Basar · Preis',
+        scene: 'Auf dem Basar gefällt dir ein Teppich.', sceneTr: 'Çarşıda bir halı hoşuna gidiyor.',
+        q: 'Wie fragst du nach dem Preis?', qTr: 'Fiyatı nasıl sorarsın?',
+        hint: '"kaça" / "ne kadar" = wie viel', hintTr: '"kaça" / "ne kadar" = ne kadar',
+        opts: ['Bu kaça? Ne kadar bu?', 'Para var mı?', 'Bu pahalı değil mi?', 'Bana halı ver.'],
+        optsDe: ['Was kostet das? Wie viel ist das?', 'Gibt es Geld?', 'Ist das nicht teuer?', 'Gib mir den Teppich.'],
+        c: 0,
+        fb: '"Bu kaça?" oder "Ne kadar bu?" — so fragt man im Laden nach dem Preis.', fbTr: '"Bu kaça?" ya da "Ne kadar bu?" — dükkanda fiyat böyle sorulur.',
+        ex: 'B ergibt keinen Sinn, C unterstellt schon, D ist ein Befehl.', exTr: 'B anlamsız, C baştan suçlar gibi, D emir kipi.' },
+      { lv: 'B1', topic: 'Basar · Handeln',
+        scene: 'Der Händler nennt einen Preis. Er ist dir zu hoch.', sceneTr: 'Satıcı bir fiyat söylüyor. Sana fazla geliyor.',
+        q: 'Wie handelst du freundlich?', qTr: 'Nasıl kibarca pazarlık edersin?',
+        hint: 'Handeln gehört auf dem Basar dazu — mit Charme', hintTr: 'Çarşıda pazarlık normaldir — güler yüzle',
+        opts: ['Çok pahalı! Param yok.', 'Biraz indirim yapar mısınız? Olmaz mı abi?', 'Hayır, almıyorum.', 'Bu fiyat çok saçma.'],
+        optsDe: ['Viel zu teuer! Ich hab kein Geld.', 'Machen Sie ein bisschen Rabatt? Geht das nicht, Bruder?', 'Nein, ich kaufe nicht.', 'Dieser Preis ist total absurd.'],
+        c: 1,
+        fb: '"Biraz indirim yapar mısınız? Olmaz mı abi?" — charmant handeln mit "abi" wirkt Wunder.', fbTr: '"Biraz indirim yapar mısınız? Olmaz mı abi?" — "abi" diyerek güler yüzle pazarlık iş görür.',
+        ex: 'A wirkt bedürftig, C beendet alles, D ist beleidigend. Mit "abi/abla" bleibt es freundlich.', exTr: 'A muhtaç gösterir, C her şeyi bitirir, D hakaret gibi. "abi/abla" ile dostça kalır.' },
+      { lv: 'A2', topic: 'Wegfrage',
+        scene: 'Du suchst den Strand und fragst einen Passanten.', sceneTr: 'Plajı arıyorsun ve bir yoldan geçene soruyorsun.',
+        q: 'Wie fragst du höflich nach dem Weg?', qTr: 'Yolu nasıl kibarca sorarsın?',
+        hint: '"Affedersiniz" = Entschuldigung · "nasıl gidebilirim"', hintTr: '"Affedersiniz" = pardon · "nasıl gidebilirim"',
+        opts: ['Plaj nerede?', 'Affedersiniz, plaja nasıl gidebilirim?', 'Plaj!', 'Sen plajı biliyor musun?'],
+        optsDe: ['Wo ist der Strand?', 'Entschuldigung, wie komme ich zum Strand?', 'Strand!', 'Kennst du den Strand? (du-Form)'],
+        c: 1,
+        fb: '"Affedersiniz, plaja nasıl gidebilirim?" — höflich angefangen, klar gefragt.', fbTr: '"Affedersiniz, plaja nasıl gidebilirim?" — kibarca başlayıp net soru.',
+        ex: 'A geht zur Not, ist aber abrupt. C ist nur ein Wort, D ist die zu lockere du-Form zu einem Fremden.', exTr: 'A olur ama sert. C tek kelime, D yabancıya fazla samimi "sen" formu.' },
+      { lv: 'B1', topic: 'Hotel-Problem',
+        scene: 'Die Klimaanlage in deinem Hotelzimmer geht nicht.', sceneTr: 'Otel odandaki klima çalışmıyor.',
+        q: 'Wie meldest du das an der Rezeption?', qTr: 'Bunu resepsiyonda nasıl bildirirsin?',
+        hint: '"çalışmıyor" = funktioniert nicht · "bakabilir misiniz"', hintTr: '"çalışmıyor" = çalışmıyor · "bakabilir misiniz"',
+        opts: ['Klima bozuk, sıcaktan uyuyamıyorum. Bakabilir misiniz?', 'Klima yok.', 'Oda kötü.', 'Klimayı tamir et.'],
+        optsDe: ['Die Klima ist kaputt, ich kann vor Hitze nicht schlafen. Könnten Sie nachsehen?', 'Keine Klima.', 'Zimmer schlecht.', 'Reparier die Klima. (Befehl)'],
+        c: 0,
+        fb: '"Klima bozuk... Bakabilir misiniz?" — Problem erklärt + höfliche Bitte. Perfekt.', fbTr: '"Klima bozuk... Bakabilir misiniz?" — sorunu anlatıp kibarca rica. Mükemmel.',
+        ex: 'B und C sind zu knapp/unklar, D ist ein Befehl an das Personal.', exTr: 'B ve C fazla kısa/belirsiz, D personele emir gibi.' },
+      { lv: 'B2', topic: 'Service-Lob',
+        scene: 'Der Kellner war den ganzen Abend super aufmerksam.', sceneTr: 'Garson bütün akşam çok ilgiliydi.',
+        q: 'Wie bedankst du dich herzlich (über das Übliche hinaus)?', qTr: 'Nasıl içtenlikle teşekkür edersin?',
+        hint: '"eline sağlık" geht auch beim Service-Lob', hintTr: '"eline sağlık" hizmet övgüsünde de kullanılır',
+        opts: ['Sağ ol.', 'Çok teşekkürler, gerçekten çok ilgilendiniz, elinize sağlık!', 'Tamam, görüşürüz.', 'İyi, peki.'],
+        optsDe: ['Danke. (knapp)', 'Vielen Dank, Sie waren wirklich sehr aufmerksam, top gemacht!', 'Okay, man sieht sich.', 'Gut, in Ordnung.'],
+        c: 1,
+        fb: 'Ausführlicher Dank + "elinize sağlık" zeigt echte Wertschätzung.', fbTr: 'Uzun teşekkür + "elinize sağlık" gerçek takdir gösterir.',
+        ex: 'A ist sehr knapp, C/D klingen gleichgültig. Wärme zeigt man mit ein paar Worten mehr.', exTr: 'A çok kısa, C/D ilgisiz durur. Birkaç kelime fazlası sıcaklık katar.' },
+    ],
+  },
+  fussball: {
+    name: 'Fußball', icon: '⚽', cls: 'c-fussball', lvl: 'B1–C1',
+    desc: 'Mitfiebern, Derby, Slang und sportlich kontern.',
+    questions: [
+      { lv: 'B1', topic: 'Lieblingsteam',
+        scene: 'Ein neuer Bekannter fragt: "Hangi takımlısın?"', sceneTr: 'Yeni bir tanıdık soruyor: "Hangi takımlısın?"',
+        q: 'Was passt als natürliche Antwort?', qTr: 'Doğal bir cevap hangisi?',
+        hint: '"-lı/-li" = "Anhänger von ..."', hintTr: '"-lı/-li" = "... taraftarı"',
+        opts: ['Galatasaraylıyım, ya sen?', 'Futbol sevmiyorum.', 'Hangi takım iyi bilmiyorum.', 'Takım nerede?'],
+        optsDe: ['Ich bin Galatasaray-Fan, und du?', 'Ich mag keinen Fußball.', 'Ich weiß nicht, welches Team gut ist.', 'Wo ist das Team?'],
+        c: 0,
+        fb: '"...lıyım" sagt, welches Team du anfeuerst. "Galatasaraylıyım, ya sen?" passt perfekt.', fbTr: '"...lıyım" hangi takımı tuttuğunu söyler. "Galatasaraylıyım, ya sen?" tam oturur.',
+        ex: 'Die Frage heißt "Welches Team hältst du?". B/C weichen aus, D versteht die Frage falsch.', exTr: 'Soru "hangi takımı tutuyorsun?" demek. B/C geçiştirir, D soruyu yanlış anlar.' },
+      { lv: 'B1', topic: 'Derby',
+        scene: 'Heute ist das Derby Galatasaray gegen Fenerbahçe.', sceneTr: 'Bugün Galatasaray-Fenerbahçe derbisi var.',
+        q: 'Wie sagst du aufgeregt "Heute ist das große Spiel!"?', qTr: '"Bugün büyük maç var!" diye heyecanla nasıl dersin?',
+        hint: '"maç" = Spiel · "derbi" = Derby', hintTr: '"maç" = maç · "derbi" = derbi',
+        opts: ['Bugün maç var galiba.', 'Bugün büyük derbi var, heyecandan duramıyorum!', 'Maç ne zaman bilmiyorum.', 'Futbol oynuyoruz bugün.'],
+        optsDe: ['Heute ist wohl ein Spiel.', 'Heute ist das große Derby, ich kann vor Aufregung nicht stillsitzen!', 'Ich weiß nicht, wann das Spiel ist.', 'Wir spielen heute Fußball.'],
+        c: 1,
+        fb: '"Büyük derbi var, heyecandan duramıyorum!" — echte Fan-Energie.', fbTr: '"Büyük derbi var, heyecandan duramıyorum!" — gerçek taraftar enerjisi.',
+        ex: 'A klingt unsicher, C weiß nichts, D heißt "wir spielen selbst" (falsch).', exTr: 'A emin değil, C bilmiyor, D "biz oynuyoruz" demek (yanlış).' },
+      { lv: 'C1', topic: 'Slang · Tor',
+        scene: 'Dein Team schießt in der letzten Minute das Siegtor.', sceneTr: 'Takımın son dakikada galibiyet golünü atıyor.',
+        q: 'Wie reagierst du wie ein echter Fan?', qTr: 'Gerçek bir taraftar gibi nasıl tepki verirsin?',
+        hint: 'Spontan, laut, mit Slang', hintTr: 'Ani, yüksek sesle, argolu',
+        opts: ['Gol atıldı, güzel oldu.', 'GOOOL! Deli oluyorum, attııık beee!', 'Takım bir gol attı.', 'Galiba kazandık.'],
+        optsDe: ['Es wurde ein Tor erzielt, schön.', 'TOOOR! Ich dreh durch, wir haben getroffen, jaaa!', 'Das Team hat ein Tor geschossen.', 'Glaube, wir haben gewonnen.'],
+        c: 1,
+        fb: '"GOOOL! Deli oluyorum, attııık beee!" — pure Emotion, genau wie auf der Tribüne.', fbTr: '"GOOOL! Deli oluyorum, attııık beee!" — saf coşku, tam tribün ağzı.',
+        ex: 'A, C und D sind viel zu neutral für einen Last-Minute-Siegtreffer.', exTr: 'A, C ve D son dakika golü için fazla durgun.' },
+      { lv: 'B2', topic: 'Schiri · Meckern',
+        scene: 'Der Schiedsrichter pfeift einen klaren Elfmeter nicht.', sceneTr: 'Hakem apaçık bir penaltıyı vermiyor.',
+        q: 'Wie beschwerst du dich umgangssprachlich (aber nicht vulgär)?', qTr: 'Nasıl günlük dille (ama kaba olmadan) şikayet edersin?',
+        hint: '"hakem" = Schiri · "penaltı yok mu?"', hintTr: '"hakem" = hakem · "penaltı yok mu?"',
+        opts: ['Hakem doğru karar verdi.', 'Yok artık hakem! Resmen penaltı, nasıl görmez ya?', 'Penaltı neydi acaba?', 'Maçı izlemiyorum.'],
+        optsDe: ['Der Schiri hat richtig entschieden.', 'Komm schon, Schiri! Das ist klar Elfmeter, wie kann er das nicht sehen?', 'Was war nochmal ein Elfmeter?', 'Ich schaue das Spiel nicht.'],
+        c: 1,
+        fb: '"Yok artık hakem! ... nasıl görmez ya?" — typisches, lebhaftes Fan-Meckern.', fbTr: '"Yok artık hakem! ... nasıl görmez ya?" — tipik, ateşli taraftar serzenişi.',
+        ex: 'A widerspricht der Situation, C wirkt ahnungslos, D passt nicht zum Mitfiebern.', exTr: 'A duruma ters, C bilgisiz durur, D maçı yaşamayan biri gibi.' },
+      { lv: 'B1', topic: 'Verabreden',
+        scene: 'Du willst das Spiel mit Freunden im Café schauen.', sceneTr: 'Maçı arkadaşlarınla kafede izlemek istiyorsun.',
+        q: 'Wie schlägst du es vor?', qTr: 'Bunu nasıl teklif edersin?',
+        hint: '"izlemek" = schauen · Wunschform "-elim"', hintTr: '"izlemek" = izlemek · istek "-elim"',
+        opts: ['Maçı evde izleyeceğim.', 'Hadi maçı kafede beraber izleyelim, ne dersin?', 'Maç izlemek istemiyorum.', 'Kafe nerede bilmiyorum.'],
+        optsDe: ['Ich schaue das Spiel zu Hause.', 'Komm, lass uns das Spiel zusammen im Café schauen, was sagst du?', 'Ich will kein Spiel schauen.', 'Ich weiß nicht, wo das Café ist.'],
+        c: 1,
+        fb: '"Hadi maçı kafede beraber izleyelim, ne dersin?" — klare, freundliche Einladung.', fbTr: '"Hadi maçı kafede beraber izleyelim, ne dersin?" — net, dostça bir davet.',
+        ex: 'A bleibt allein, C lehnt ab, D weicht aus. "-elim" + "ne dersin?" lädt ein.', exTr: 'A tek başına, C reddeder, D konuyu kaçırır. "-elim" + "ne dersin?" davet eder.' },
+      { lv: 'C1', topic: 'Sportlich kontern',
+        scene: 'Dein Team hat knapp verloren. Ein Fan des Gegners zieht dich auf.', sceneTr: 'Takımın farksız kaybetti. Rakip taraftar seninle dalga geçiyor.',
+        q: 'Wie konterst du sportlich-locker (ohne Streit)?', qTr: 'Nasıl sportmence ve rahat karşılık verirsin (kavga etmeden)?',
+        hint: '"helal olsun" = Respekt · sportlich bleiben', hintTr: '"helal olsun" = saygı · sportmen kalmak',
+        opts: ['Hakem yüzünden kaybettik, sayılmaz!', 'Helal olsun, iyi oynadınız — sonraki sefere bize de var!', 'Sizinle konuşmak istemiyorum.', 'Futboldan anlamıyorsunuz.'],
+        optsDe: ['Wir haben wegen des Schiris verloren, zählt nicht!', 'Respekt, ihr habt gut gespielt — nächstes Mal sind wir dran!', 'Ich will nicht mit euch reden.', 'Ihr habt keine Ahnung von Fußball.'],
+        c: 1,
+        fb: '"Helal olsun, iyi oynadınız — sonraki sefere bize de var!" — souverän und sportlich.', fbTr: '"Helal olsun, iyi oynadınız — sonraki sefere bize de var!" — centilmence ve özgüvenli.',
+        ex: 'A sucht Ausreden, C ist beleidigt, D wird ausfallend. Sportlichkeit gewinnt Sympathie.', exTr: 'A bahane arar, C küser, D hakaret eder. Sportmenlik sempati kazandırır.' },
+    ],
+  },
+};
+let curCat = null, qBuffer = [], curQ = 0, qScore = 0, qAnswered = 0, qAns = false;
+let qGenerating = false;
+let qDiff = 2;
+const DIFF_LBL = { 1: 'Leicht', 2: 'Mittel', 3: 'Schwer' };
+const DIFF_BAND = { 1: 'A1–A2', 2: 'B1–B2', 3: 'C1–C2' };
+const DIFF_GEN = {
+  1: 'Niveau A1–A2: sehr einfache, kurze Alltagssätze, Grundwortschatz, kein Slang. Nur Multiple Choice (type:"mc").',
+  2: 'Niveau B1–B2: natürliche Alltagssprache, etwas Idiomatik. Multiple Choice (type:"mc").',
+  3: 'Niveau C1–C2: anspruchsvoll, idiomatisch, feine Register-/Stilunterschiede, Slang. MISCHE Multiple Choice (type:"mc") mit Lückentext-Aufgaben (type:"fill") — etwa jede dritte Frage als Lückentext.'
+};
+const usedQ = new Set();
+function bandOf(lv) { if (lv === 'A1' || lv === 'A2') return 1; if (lv === 'B1' || lv === 'B2') return 2; return 3; }
+// Sprachauswahl je nach Niveau: ab Schwer alles auf Türkisch
+function fld(d, name) {
+  if (qDiff === 3) { const t = d[name + 'Tr']; return (t === undefined || t === null) ? d[name] : t; }
+  return d[name];
+}
+// Lückentext-Aufgaben (nur ab Schwer / C1–C2) als Offline-Fallback ohne API-Key
+const fillPool = {
+  freunde: [
+    { type: 'fill', lv: 'C1', topic: 'Deyim · Lücke', scene: null, sceneTr: null, q: 'Vervollständige den Satz, mit dem man einen Freund beruhigt:', qTr: 'Bir arkadaşı sakinleştiren cümleyi tamamla:', sentence: 'Boş ver ya, ___ kafana, o kadar önemli değil!', hint: '"takmak" = sich Gedanken machen → verneinter Imperativ', hintTr: '"takmak" → olumsuz emir', answers: ['takma'], fb: '"Takma kafana!" = "Mach dir keinen Kopf!"', fbTr: '"Takma kafana!" = dert etme.', ex: '"takma" ist der verneinte Befehl von "takmak" (sich kümmern/Gedanken machen).', exTr: '"takma", "takmak" fiilinin olumsuz emir hâli.' },
+    { type: 'fill', lv: 'C1', topic: 'Slang · Lücke', scene: 'Ein Kumpel fragt "naber?".', sceneTr: 'Bir kanka "naber?" diye soruyor.', q: 'Setz das passende Verb ein (chillen/abhängen, 1. Person):', qTr: 'Uygun fiili koy (takılmak, 1. tekil):', sentence: 'İyilik, senden naber? Evde ___ işte.', hint: '"takılmak" = abhängen — şimdiki zaman, "ben"', hintTr: '"takılmak" — şimdiki zaman, ben', answers: ['takılıyorum'], fb: '"Takılıyorum işte" = "Häng halt einfach ab."', fbTr: '"Takılıyorum işte" — boş boş takılıyorum demek.', ex: '"-ıyorum" ist die 1. Person Präsens von "takılmak".', exTr: '"-ıyorum" eki "takılmak" fiilinin şimdiki zaman 1. tekil hâli.' },
+  ],
+  familie: [
+    { type: 'fill', lv: 'C1', topic: 'Floskel · Lücke', scene: 'Dein Onkel ist krank geworden.', sceneTr: 'Amcan hastalanmış.', q: 'Ergänze die feste Genesungsformel:', qTr: 'Kalıp geçmiş olsun ifadesini tamamla:', sentence: 'Hastalandığını duydum, ___ olsun amca!', hint: 'Formel für "Gute Besserung"', hintTr: '"Gute Besserung" kalıbı', answers: ['geçmiş'], fb: '"Geçmiş olsun!" = "Gute Besserung!"', fbTr: '"Geçmiş olsun!" — şifa dileği.', ex: '"geçmiş olsun" ist die feste Wendung für Krankheit/Pech.', exTr: '"geçmiş olsun" hastalık/talihsizlik için kalıp ifadedir.' },
+    { type: 'fill', lv: 'C2', topic: 'Floskel · Lücke', scene: 'Deine Mutter hat lecker gekocht.', sceneTr: 'Annen güzel bir yemek yapmış.', q: 'Vervollständige das Koch-Kompliment:', qTr: 'Aşçıya iltifatı tamamla:', sentence: 'Çok lezzetliydi anne, ___ sağlık!', hint: '"el" (Hand) + Possessiv (deine)', hintTr: '"el" + iyelik eki', answers: ['eline'], fb: '"Eline sağlık!" lobt den Koch ("gesegnete Hände").', fbTr: '"Eline sağlık!" aşçıyı över.', ex: '"eline" = "el" + Possessiv 2. Person Singular.', exTr: '"eline" = "el" + 2. tekil iyelik.' },
+  ],
+  restaurant: [
+    { type: 'fill', lv: 'C1', topic: 'Lücke · Bezahlen', scene: 'Ihr seid mit dem Essen fertig.', sceneTr: 'Yemeğiniz bitti.', q: 'Setz das Wort für "Rechnung" im Akkusativ ein:', qTr: '"hesap" kelimesini belirtme hâliyle koy:', sentence: 'Yemek bitti, ___ alabilir miyiz lütfen?', hint: '"hesap" + Akkusativ -ı', hintTr: '"hesap" + belirtme eki -ı', answers: ['hesabı'], fb: '"Hesabı alabilir miyiz?" = "Können wir die Rechnung haben?"', fbTr: '"Hesabı alabilir miyiz?" — kibar hesap isteme.', ex: '"hesap" wird im Akkusativ zu "hesabı" (Konsonantenwechsel p→b).', exTr: '"hesap" belirtme hâlinde "hesabı" olur (p→b yumuşaması).' },
+    { type: 'fill', lv: 'C1', topic: 'Lücke · Floskel', scene: 'Du servierst deinen Gästen das Essen.', sceneTr: 'Misafirlerine yemeği koyuyorsun.', q: 'Ergänze, was der Gastgeber wünscht:', qTr: 'Ev sahibinin dileğini tamamla:', sentence: 'Buyurun, yemeğinizi yiyin — ___ olsun!', hint: 'Wunsch zum Essen (guten Appetit)', hintTr: 'Yemek dileği', answers: ['afiyet'], fb: '"Afiyet olsun!" = "Guten Appetit!"', fbTr: '"Afiyet olsun!" — yemek dileği.', ex: '"afiyet olsun" sagt der Gastgeber zum Gast.', exTr: '"afiyet olsun" ev sahibi misafire der.' },
+  ],
+  urlaub: [
+    { type: 'fill', lv: 'C1', topic: 'Lücke · Basar', scene: 'Du handelst auf dem Basar.', sceneTr: 'Çarşıda pazarlık ediyorsun.', q: 'Setz das Wort für "Rabatt" ein:', qTr: '"Rabatt" kelimesini koy:', sentence: 'Biraz ___ yapar mısınız abi, fazla pahalı?', hint: 'türkisch für Rabatt/Nachlass', hintTr: 'Türkçe "Rabatt"', answers: ['indirim'], fb: '"İndirim yapar mısınız?" = "Machen Sie Rabatt?"', fbTr: '"İndirim yapar mısınız?" — pazarlık ifadesi.', ex: '"indirim" = Rabatt; "indirim yapmak" = Rabatt geben.', exTr: '"indirim" = indirim; "indirim yapmak" = indirim yapmak.' },
+    { type: 'fill', lv: 'C1', topic: 'Lücke · Wegfrage', scene: 'Du fragst nach dem Weg zum Strand.', sceneTr: 'Plaja giden yolu soruyorsun.', q: 'Ergänze das Fragewort (wie):', qTr: 'Soru kelimesini tamamla (nasıl):', sentence: 'Affedersiniz, plaja ___ gidebilirim?', hint: '"wie" auf Türkisch', hintTr: 'Türkçe "wie"', answers: ['nasıl'], fb: '"Nasıl gidebilirim?" = "Wie komme ich hin?"', fbTr: '"Nasıl gidebilirim?" — yol sorma.', ex: '"nasıl" = wie; höfliche Wegfrage mit "-abilirim".', exTr: '"nasıl" = nasıl; "-abilirim" ile kibar soru.' },
+  ],
+  fussball: [
+    { type: 'fill', lv: 'C1', topic: 'Lücke · Taraftar', scene: 'Du fragst jemanden nach seinem Team.', sceneTr: 'Birine takımını soruyorsun.', q: 'Ergänze die Frage "Welches Team hältst du?":', qTr: '"Hangi takımı tutuyorsun?" sorusunu tamamla:', sentence: 'Sen hangi ___? Ben Fenerbahçeliyim.', hint: '"takım" + "-lı" + Frage-Endung', hintTr: '"takım" + "-lı" + soru eki', answers: ['takımlısın'], fb: '"Hangi takımlısın?" = "Welches Team hältst du?"', fbTr: '"Hangi takımlısın?" — takım sorma.', ex: '"takımlısın" = takım + -lı + 2. Person.', exTr: '"takımlısın" = takım + -lı + 2. tekil.' },
+    { type: 'fill', lv: 'C2', topic: 'Lücke · Schiri', scene: 'Der Schiri übersieht ein klares Foul im Strafraum.', sceneTr: 'Hakem ceza sahasındaki net faulü görmüyor.', q: 'Setz das Fußballwort ein (Elfmeter):', qTr: 'Futbol kelimesini koy (penaltı):', sentence: 'Yok artık hakem, resmen ___! Nasıl görmez ya?', hint: 'türkisch für Elfmeter', hintTr: 'Türkçe "Elfmeter"', answers: ['penaltı'], fb: '"Resmen penaltı!" = "Das ist klar Elfmeter!"', fbTr: '"Resmen penaltı!" — net penaltı itirazı.', ex: '"penaltı" = Elfmeter; "resmen" verstärkt ("regelrecht").', exTr: '"penaltı" = penaltı; "resmen" vurgulayıcı.' },
+  ],
+};
+function shuffleArr(a) { return [...a].sort(() => Math.random() - .5); }
+// Fragenauswahl passend zum gewählten GER-Band
+function seedFor(cat) {
+  const all = quizzes[cat].questions.slice();
+  let pool = all.filter(q => bandOf(q.lv) === qDiff && !usedQ.has(q.q));
+  if (qDiff === 3 && fillPool[cat]) pool = pool.concat(fillPool[cat].filter(q => !usedQ.has(q.q)));
+  if (!pool.length) pool = all.filter(q => !usedQ.has(q.q));
+  if (!pool.length) pool = all;
+  return shuffleArr(pool);
+}
+function normTr(s) {
+  return (s || '').toLocaleLowerCase('tr-TR').replace(/[.,!?;:()"'’`´]/g, '').replace(/\s+/g, ' ').trim();
+}
+function setDiff(v) {
+  qDiff = +v;
+  document.getElementById('qdiffval').textContent = `${DIFF_LBL[qDiff]} · ${DIFF_BAND[qDiff]}`;
+  if (!curCat || document.getElementById('quiz-main').style.display === 'none') return;
+  // aktuelle Frage in neuer Sprache zeigen, kommende Fragen ans neue Niveau anpassen
+  if (curQ < qBuffer.length) { qBuffer = qBuffer.slice(0, curQ + 1); renderQ(qBuffer[curQ]); }
+  else qBuffer = [];
+  qBuffer = qBuffer.concat(seedFor(curCat));
+  qGenerating = false;
+  if (endlessOn()) generateMore(curCat);
+}
+
+const themePrompts = {
+  freunde: 'lockere Gespräche unter jungen Freunden: moderner Slang und Umgangssprache (z.B. naber, kanka, ya, lan, takılmak, boş ver, valla), Pläne machen, auf Neuigkeiten reagieren, locker absagen, necken. KEIN förmliches Türkisch.',
+  familie: 'Gespräche mit der Familie (Eltern, Großeltern, Onkel/Tanten): herzlich und respektvoll, Höflichkeitsform (-siniz) zu Älteren, türkische Verwandtschaftsbegriffe korrekt verwenden (anne, baba, teyze, hala, amca, dayı, abla, abi, yenge, büyükanne, dede), feste Floskeln (geçmiş olsun, eline/elinize sağlık, Allah razı olsun, kısmet, inşallah).',
+  restaurant: 'Situationen im Restaurant oder Café in der Türkei: höflich bestellen mit "-abilir miyim/miyiz", nachfragen (içinde et var mı?), nach Empfehlungen fragen, das Essen loben (elinize sağlık), Tee/çay-Kultur, die Rechnung verlangen (hesap), bezahlen, reklamieren.'
+};
+function endlessOn() { return !!apiKey; }
+function shuffleQ(arr) { return [...arr].sort(() => Math.random() - .5); }
+
+function buildQuizSelect() {
+  const wrap = document.getElementById('quiz-cats'); wrap.innerHTML = '';
+  Object.entries(quizzes).forEach(([key, qz]) => {
+    const b = document.createElement('button');
+    b.className = `quiz-cat ${qz.cls}`;
+    b.onclick = () => startQuiz(key);
+    const countTag = endlessOn() ? '<span class="qc-tag">♾️ endlos</span>' : `<span class="qc-tag">📝 ${qz.questions.length}+ Fragen</span>`;
+    b.innerHTML = `<div class="qc-icon">${qz.icon}</div>
+      <div class="qc-body">
+        <div class="qc-name">${qz.name}</div>
+        <div class="qc-desc">${qz.desc}</div>
+        <div class="qc-meta">${countTag}<span class="qc-tag">${qz.lvl}</span></div>
+      </div>
+      <div class="qc-arrow">→</div>`;
+    wrap.appendChild(b);
+  });
+}
+function showQuizSelect() {
+  document.getElementById('quiz-select').style.display = 'block';
+  document.getElementById('quiz-main').style.display = 'none';
+  document.getElementById('qresult').className = 'q-result';
+  const note = document.getElementById('quiz-endless-note');
+  if (endlessOn()) note.innerHTML = '♾️ <strong>Endlos-Modus aktiv</strong> — Effe generiert laufend neue Fragen passend zum gewählten Niveau. Den Schwierigkeits-Regler kannst du im Quiz jederzeit verschieben.';
+  else note.innerHTML = '💡 Mit Anthropic-API-Key (Seite neu laden) generiert Effe <strong>unendlich</strong> neue Fragen. Ohne Key wiederholen sich die Fragen gemischt. Der Niveau-Regler im Quiz funktioniert trotzdem.';
+  buildQuizSelect();
+}
+function backToSelect() { showQuizSelect(); }
+function startQuiz(cat) {
+  curCat = cat;
+  qBuffer = seedFor(cat);
+  curQ = 0; qScore = 0; qAnswered = 0;
+  document.getElementById('quiz-select').style.display = 'none';
+  document.getElementById('qresult').className = 'q-result';
+  document.getElementById('quiz-main').style.display = 'block';
+  document.getElementById('qcattitle').innerHTML = `${quizzes[cat].icon} ${quizzes[cat].name}`;
+  document.getElementById('qdiff').value = qDiff;
+  document.getElementById('qdiffval').textContent = `${DIFF_LBL[qDiff]} · ${DIFF_BAND[qDiff]}`;
+  loadQ();
+  if (endlessOn()) generateMore(cat); // erste KI-Fragen im Hintergrund vorladen
+}
+
+function loadQ() {
+  if (curQ < qBuffer.length) { renderQ(qBuffer[curQ]); maybePrefetch(); return; }
+  // Puffer leer → nachschieben
+  if (!endlessOn()) { qBuffer = qBuffer.concat(seedFor(curCat)); renderQ(qBuffer[curQ]); return; }
+  // Endlos-Modus: auf KI-Frage warten
+  showQuizLoading(); maybePrefetch(); waitForQuestion();
+}
+function waitForQuestion() {
+  const cat = curCat;
+  const poll = setInterval(() => {
+    if (curCat !== cat) { clearInterval(poll); return; }
+    if (curQ < qBuffer.length) { clearInterval(poll); renderQ(qBuffer[curQ]); maybePrefetch(); }
+  }, 400);
+  // Sicherheitsnetz: falls die KI klemmt, nach 16s auf vorhandene Fragen zurückfallen
+  setTimeout(() => {
+    if (curCat === cat && curQ >= qBuffer.length) {
+      clearInterval(poll);
+      qBuffer = qBuffer.concat(seedFor(cat));
+      renderQ(qBuffer[curQ]);
+    }
+  }, 16000);
+}
+function maybePrefetch() {
+  if (endlessOn() && !qGenerating && (qBuffer.length - curQ) <= 3) generateMore(curCat);
+}
+async function generateMore(cat) {
+  if (qGenerating || !apiKey) return;
+  qGenerating = true;
+  try {
+    const newQs = await generateQuestions(cat, 4);
+    if (curCat === cat && newQs.length) qBuffer.push(...newQs);
+  } catch (e) { /* still: Sicherheitsnetz greift */ }
+  qGenerating = false;
+}
+function validQ(q) {
+  if (!q || typeof q.q !== 'string' || typeof q.fb !== 'string' || typeof q.ex !== 'string' || typeof q.hint !== 'string' || typeof q.lv !== 'string' || typeof q.topic !== 'string') return false;
+  if (!(q.scene === null || typeof q.scene === 'string')) return false;
+  if (q.type === 'fill') {
+    return typeof q.sentence === 'string' && q.sentence.includes('___') && Array.isArray(q.answers) && q.answers.length > 0 && q.answers.every(a => typeof a === 'string');
+  }
+  return Array.isArray(q.opts) && q.opts.length === 4 && q.opts.every(o => typeof o === 'string' && o.length) && Number.isInteger(q.c) && q.c >= 0 && q.c <= 3;
+}
+async function generateQuestions(cat, count) {
+  const qz = quizzes[cat];
+  const avoid = [...usedQ].slice(-14);
+  const sys = `Du bist Quiz-Autor für eine Türkisch-Lern-App für Deutsch-Türken (Heritage Speakers, Niveau ${profile.niveau || 'B2'}). Sie verstehen viel Türkisch, sprechen aber unsicher und neigen zu Germanismen, falschem Register und fehlenden Idiomen.`;
+  const user = `Erstelle ${count} NEUE, abwechslungsreiche Quizfragen zum Thema "${qz.name}".
+Kontext: ${themePrompts[cat]}
+Schwierigkeit (GER-Niveau): ${DIFF_GEN[qDiff]}
+Das Feld "lv" MUSS im Bereich ${DIFF_BAND[qDiff]} liegen. Die Fragen sollen inhaltlich zu diesem Niveau passen (Wortschatz, Idiomatik, Komplexität).
+
+Standardtyp ("mc"): Die Frage testet, welche von 4 türkischen Antwortmöglichkeiten am natürlichsten und passendsten ist. Genau EINE ist klar die beste; die anderen 3 sind plausibel, aber z.B. zu förmlich, zu direkt, falsches Wort oder ein Germanismus. opts sind IMMER Türkisch; optsDe ist die deutsche Übersetzung jeder Option (gleiche Reihenfolge).
+
+Liefere jede Frage ZWEISPRACHIG (deutsche + türkische Felder), damit die App die Sprache umschalten kann.
+
+Antworte AUSSCHLIESSLICH mit einem gültigen JSON-Array, ohne Markdown, ohne Text davor/danach.
+Schema für Multiple Choice:
+{"type":"mc","lv":"${DIFF_BAND[qDiff].split('–')[0]}|${DIFF_BAND[qDiff].split('–')[1]}","topic":"kurzer Tag","scene":"deutsche Szene mit türkischem Zitat ODER null","sceneTr":"türkische Szene ODER null","q":"deutsche Frage","qTr":"türkische Frage","hint":"deutscher Tipp","hintTr":"türkischer Tipp","opts":["tr","tr","tr","tr"],"optsDe":["de","de","de","de"],"c":0-3,"fb":"deutsches Feedback","fbTr":"türkisches Feedback","ex":"deutsche Erklärung","exTr":"türkische Erklärung"}
+${qDiff === 3 ? `\nSchema für Lückentext (etwa jede dritte Frage; type:"fill"):\n{"type":"fill","lv":"C1|C2","topic":"kurzer Tag","scene":"deutsche Szene ODER null","sceneTr":"türkische Szene ODER null","q":"deutsche Aufgabenstellung (was einzusetzen ist)","qTr":"türkische Aufgabenstellung","sentence":"türkischer Satz mit ___ als Lücke (genau drei Unterstriche)","hint":"deutscher Tipp","hintTr":"türkischer Tipp","answers":["akzeptierte türkische Lösung(en) für die Lücke"],"fb":"deutsches Feedback","fbTr":"türkisches Feedback","ex":"deutsche Erklärung","exTr":"türkische Erklärung"}\n` : ''}
+Variiere Szenen und Antwortposition. Vermeide diese bereits gestellten Fragen: ${avoid.join(' || ') || '(noch keine)'}`;
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 4000, system: sys, messages: [{ role: 'user', content: user }] })
+  });
+  if (!res.ok) throw new Error('gen failed');
+  const data = await res.json();
+  let txt = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
+  txt = txt.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+  const s = txt.indexOf('['), e = txt.lastIndexOf(']');
+  if (s >= 0 && e > s) txt = txt.slice(s, e + 1);
+  let arr; try { arr = JSON.parse(txt); } catch (_) { return []; }
+  if (!Array.isArray(arr)) return [];
+  return arr.filter(validQ).filter(q => !usedQ.has(q.q));
+}
+
+function renderQ(d) {
+  usedQ.add(d.q);
+  document.getElementById('qctr').textContent = `Frage ${qAnswered + 1}${qAnswered ? ` · ${qScore} richtig` : ''}`;
+  document.getElementById('qpf').style.width = (qAnswered ? Math.round(qScore / qAnswered * 100) : 8) + '%';
+  document.getElementById('qtopic').textContent = `Thema: ${d.topic}`;
+  const lel = document.getElementById('qlvl');
+  lel.textContent = d.lv; lel.className = `q-lvl ${(d.lv || '').charAt(0) === 'C' ? 'lvl-c1' : 'lvl-b2'}`;
+  const sc = document.getElementById('qscene');
+  const sceneTxt = fld(d, 'scene');
+  if (sceneTxt) { sc.style.display = 'block'; document.getElementById('qscenetxt').textContent = sceneTxt; } else sc.style.display = 'none';
+  document.getElementById('qtxt').textContent = fld(d, 'q');
+  document.getElementById('qhint').textContent = fld(d, 'hint');
+  document.getElementById('qfb').className = 'q-fb';
+  document.getElementById('qnext').style.display = 'none';
+  document.getElementById('xppop').className = 'xp-pop';
+  qAns = false;
+  const opts = document.getElementById('qopts'); opts.innerHTML = '';
+  if (d.type === 'fill') { renderFillBody(d, opts); return; }
+  const showGloss = qDiff === 1 && Array.isArray(d.optsDe);
+  ['A', 'B', 'C', 'D'].forEach((l, i) => {
+    const b = document.createElement('button'); b.className = 'q-opt';
+    const gloss = showGloss ? `<span class="q-opt-gloss">${d.optsDe[i]}</span>` : '';
+    b.innerHTML = `<span class="q-let">${l}</span><span class="q-opt-txt"><span>${d.opts[i]}</span>${gloss}</span>`;
+    b.onclick = () => selQ(i);
+    opts.appendChild(b);
+  });
+}
+function renderFillBody(d, opts) {
+  const parts = d.sentence.split('___');
+  const wrap = document.createElement('div'); wrap.className = 'fill-sentence';
+  wrap.innerHTML = `${parts[0] || ''}<span class="fill-blank" id="fillblank">_____</span>${parts[1] || ''}`;
+  opts.appendChild(wrap);
+  const row = document.createElement('div'); row.className = 'fill-row';
+  row.innerHTML = `<input class="fill-input" id="fillin" placeholder="Lücke ausfüllen…" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="fill-check" id="fillbtn">Prüfen</button>`;
+  opts.appendChild(row);
+  const input = row.querySelector('#fillin');
+  row.querySelector('#fillbtn').onclick = checkFill;
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); checkFill(); } });
+  setTimeout(() => input.focus(), 50);
+}
+function showFeedback(ok, d) {
+  qAnswered++;
+  if (ok) { qScore++; totalXP += 15; document.getElementById('home-xp').textContent = totalXP + ' XP'; }
+  const fb = document.getElementById('qfb'); fb.className = `q-fb show ${ok ? 'pos' : 'neg'}`;
+  const ft = document.getElementById('qfbt'); ft.className = `fb-title ${ok ? 'pos' : 'neg'}`;
+  ft.textContent = ok ? 'Doğru! ✓' : 'Neredeyse... 💪';
+  document.getElementById('qfbm').textContent = fld(d, 'fb');
+  document.getElementById('qfbe').textContent = fld(d, 'ex');
+  document.getElementById('qctr').textContent = `Frage ${qAnswered} · ${qScore} richtig`;
+  document.getElementById('qpf').style.width = Math.round(qScore / qAnswered * 100) + '%';
+  if (ok) document.getElementById('xppop').className = 'xp-pop show';
+  document.getElementById('qnext').style.display = 'block';
+}
+function selQ(i) {
+  if (qAns) return; qAns = true;
+  const d = qBuffer[curQ]; const ok = i === d.c;
+  document.querySelectorAll('.q-opt').forEach((b, j) => {
+    if (j === d.c) b.classList.add('correct');
+    else if (j === i) b.classList.add('wrong');
+    else b.classList.add('dis');
+  });
+  showFeedback(ok, d);
+}
+function checkFill() {
+  if (qAns) return;
+  const d = qBuffer[curQ];
+  const input = document.getElementById('fillin');
+  if (!input) return;
+  const val = input.value.trim();
+  if (!val) { input.focus(); return; }
+  qAns = true;
+  const ok = (d.answers || []).some(a => normTr(a) === normTr(val));
+  const blank = document.getElementById('fillblank');
+  input.disabled = true;
+  const btn = document.getElementById('fillbtn'); if (btn) btn.disabled = true;
+  input.classList.add(ok ? 'correct' : 'wrong');
+  if (blank) { blank.textContent = d.answers[0]; blank.className = `fill-blank ${ok ? 'correct' : 'wrong'}`; }
+  showFeedback(ok, d);
+}
+function showQuizLoading() {
+  document.getElementById('qscene').style.display = 'none';
+  document.getElementById('qtopic').textContent = 'Neue Frage';
+  document.getElementById('qlvl').textContent = '✨';
+  document.getElementById('qtxt').textContent = 'Effe schreibt gerade eine neue Frage für dich…';
+  document.getElementById('qhint').textContent = '';
+  document.getElementById('qopts').innerHTML = '<div class="thinking" style="padding:1rem 0"><span></span><span></span><span></span></div>';
+  document.getElementById('qfb').className = 'q-fb';
+  document.getElementById('qnext').style.display = 'none';
+  qAns = true;
+}
+function nextQ() { curQ++; loadQ(); }
+function finishQuiz() { showQResult(); }
+function showQResult() {
+  document.getElementById('quiz-main').style.display = 'none';
+  const r = document.getElementById('qresult'); r.className = 'q-result show';
+  const total = qAnswered || 1;
+  const pct = Math.round(qScore / total * 100);
+  document.getElementById('qrscore').textContent = `${qScore}/${qAnswered}`;
+  document.getElementById('qrlbl').textContent = qAnswered === 0 ? 'Noch keine Frage beantwortet.' : pct >= 80 ? 'Stark! Du klingst wie ein echter Türke.' : pct >= 50 ? 'Guter Ansatz — weiter üben!' : 'Effe kann helfen. Lass uns reden.';
+  const badges = [];
+  if (qAnswered >= 10) badges.push('🔥 Marathon');
+  if (qAnswered >= 5 && pct >= 80) badges.push('🎯 Muttersprachler-Niveau');
+  if (qAnswered >= 3 && pct >= 50) badges.push('💬 Alltagsprofi');
+  badges.push(`${qAnswered ? pct : 0}% richtig`);
+  badges.push(`+${qScore * 15} XP`);
+  document.getElementById('qrbadges').innerHTML = badges.map(b => `<div class="qr-badge">${b}</div>`).join('');
+}
+function restartQ() { if (curCat) startQuiz(curCat); }
+
+// ── CHAT ──
+let chatHist = [{ role: 'assistant', content: 'Ya, merhaba! Ben Effe. ✨\n\nSeninle gerçek Türkçe konuşmak için buradayım — doğal, modern, akıcı. Hadi başlayalım! Bugün ne hakkında konuşmak istersin?' }];
+let curTopic = 'iş hayatı ve kariyer', curMode = 'normal', chatLoading = false;
+
+function setMode(el, m) { document.querySelectorAll('.mpill').forEach(p => p.classList.remove('active')); el.classList.add('active'); curMode = m; }
+function setTopic(el, t) { document.querySelectorAll('.tpill').forEach(p => p.classList.remove('active')); el.classList.add('active'); curTopic = t; }
+function getModeInstr() {
+  const m = { normal: 'Korrigiere sanft nach deiner Antwort wenn nötig.', strict: 'Korrigiere JEDEN Fehler: Grammatik, Wortstellung, Register, Germanismen. Erkläre kurz warum.', roleplay: 'Spiele eine passende Rolle zum Thema. Bleibe in der Rolle.', slang: 'Nur Umgangssprache und Slang wie ein junger Türke aus Istanbul. Keine formellen Wörter.' };
+  return m[curMode] || m.normal;
+}
+async function chatSend() {
+  if (chatLoading) return;
+  const ta = document.getElementById('chatta');
+  const txt = ta.value.trim(); if (!txt) return;
+  ta.value = ''; ta.style.height = 'auto';
+  appendMsg('usr', txt);
+  chatHist.push({ role: 'user', content: txt });
+  chatLoading = true; document.getElementById('chatsend').disabled = true;
+  appendThink();
+
+  if (!apiKey) {
+    document.getElementById('think-msg')?.remove();
+    appendMsg('ai', 'Kein API Key hinterlegt! Bitte die Seite neu laden und einen Anthropic API Key eingeben. Den Key bekommst du auf console.anthropic.com.');
+    chatLoading = false; document.getElementById('chatsend').disabled = false;
+    return;
+  }
+
+  const sys = `Du bist Effe, eine KI-Konversationspartnerin für Deutsch-Türken (Heritage Speakers, Niveau ${profile.niveau || 'B2'}). Sie verstehen alles, haben aber Schwierigkeiten mit aktiver Sprachproduktion.
+
+REGELN:
+- Antworte IMMER auf Türkisch (außer bei Korrekturen)
+- Benutze natürliches, modernes Türkisch — kein Schulbuch-Türkisch
+- ${getModeInstr()}
+- Korrekturen: nach deiner Antwort als "###KOR### [Auf Deutsch: was falsch/unnatürlich war + wie es besser klingt, mit Beispiel]"
+- Erkenne typische Deutsch-Türken-Fehler: Germanismen (direkte Übersetzungen), falsches Register, fehlende Idiome, unnatürliche Wortstellung
+- Aktuelles Thema: ${curTopic}
+- Antwortlänge: 3-5 Sätze, dann eine natürliche Rückfrage`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1024, system: sys, messages: chatHist.map(m => ({ role: m.role, content: m.content })) })
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || 'API Fehler');
+    }
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || 'Bir hata oluştu.';
+    chatHist.push({ role: 'assistant', content: reply });
+    document.getElementById('think-msg')?.remove();
+    const parts = reply.split('###KOR###');
+    appendMsg('ai', parts[0].trim(), parts[1]?.trim() || null);
+  } catch (e) {
+    document.getElementById('think-msg')?.remove();
+    appendMsg('ai', `Hata: ${e.message} — API Key prüfen und neu laden.`);
+  }
+  chatLoading = false; document.getElementById('chatsend').disabled = false;
+}
+function appendMsg(role, text, cor) {
+  const msgs = document.getElementById('chatmsgs');
+  const d = document.createElement('div'); d.className = `msg ${role}`;
+  const b = document.createElement('div'); b.className = 'mbub';
+  b.innerHTML = text.replace(/\n/g, '<br>'); d.appendChild(b);
+  if (cor) { const c = document.createElement('div'); c.className = 'mcor'; c.innerHTML = `<div class="mcor-lbl">Sprachcoach · Effe 🔵</div>${cor}`; d.appendChild(c); }
+  const t = document.createElement('div'); t.className = 'mtime';
+  t.textContent = new Date().toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' }); d.appendChild(t);
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function appendThink() {
+  const msgs = document.getElementById('chatmsgs');
+  const d = document.createElement('div'); d.className = 'msg ai'; d.id = 'think-msg';
+  d.innerHTML = '<div class="mbub"><div class="thinking"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+}
+function chatKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend(); } }
+function chatResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 140) + 'px'; }
+
+// ── PRONUN ──
+const prWords = [
+  { w: 'Geçmiş olsun', ph: '[geʧ.miʃ ol.sun]', de: 'Gute Besserung / Das tut mir leid', ctx: 'Wenn jemand krank ist, gestürzt ist oder Pech hatte', tip: 'Das "G" am Anfang ist weich und kurz. Die Betonung liegt auf "ol<strong style="color:var(--gold2)">SUN</strong>". Im echten Gespräch klingt es fast wie ein Wort: "geçmişolsun".' },
+  { w: 'Allah Allah', ph: '[al.lah al.lah]', de: 'Nicht zu glauben / Erstaunlich', ctx: 'Überraschung oder Skepsis — je nach Tonfall ganz verschieden', tip: 'Beide Silben gleich betont. Deutsch-Türken betonen oft das erste "Allah" zu stark. Mit steigender Stimme = Staunen, flach = Skepsis.' },
+  { w: 'Canın sağ olsun', ph: '[dʒa.nɯn saː ol.sun]', de: 'Hauptsache du bist gesund', ctx: 'Trost nach einem Verlust oder Missgeschick — viel wärmer als "Macht nichts"', tip: '"Can" [dʒan] mit weichem J wie in "Journal". Das "-ın" kurz, nicht betonen. Diese Phrase muss fließend, fast gesungen klingen.' },
+  { w: 'Hayırlısı olsun', ph: '[ha.jɯr.lɯ.sɯ ol.sun]', de: 'Möge es zum Guten sein', ctx: 'Bei Neuigkeiten, Entscheidungen oder Veränderungen', tip: 'Das <strong style="color:var(--gold2)">ı</strong> in "hayır" ist das dunkle, punkt-lose ı — nicht "hayiri" sagen! Ein Satz der bei Deutsch-Türken oft fehlt.' },
+  { w: 'Ne halt edersen et', ph: '[ne halt e.der.sen et]', de: 'Mach was du willst (genervt)', ctx: 'Nur mit engen Freunden — wenn man aufgehört hat zu überreden', tip: '"halt" ist ein echtes türkisches Wort, nicht Deutsch! Betonung auf "E<strong style="color:var(--gold2)">DER</strong>sen". Nur mit sehr engen Freunden!' },
+];
+let curW = 0, isRec = false, recTimer = null;
+
+function buildChList() {
+  const list = document.getElementById('chlist'); list.innerHTML = '';
+  prWords.forEach((w, i) => {
+    const d = document.createElement('div'); d.className = 'ch-pill'; d.onclick = () => setPrWord(i);
+    d.innerHTML = `<div class="ch-l"><div class="ch-cat">${i < 2 ? 'Alltagsausdruck' : i < 4 ? 'Redewendung' : 'Umgangssprache'}</div><div class="ch-word">${w.w}</div></div><div class="ch-r"><span class="ch-de">${w.de.split('/')[0].trim()}</span><span class="${i >= 3 ? 'diff-h' : 'diff-m'}">${i >= 3 ? 'schwer' : 'mittel'}</span></div>`;
+    list.appendChild(d);
+  });
+}
+function setPrWord(i) {
+  curW = i; const d = prWords[i];
+  document.getElementById('pww').textContent = d.w;
+  document.getElementById('pwph').textContent = d.ph;
+  document.getElementById('pwde').textContent = d.de;
+  document.getElementById('pwctx').textContent = d.ctx;
+  document.getElementById('pwtip').innerHTML = d.tip;
+  document.getElementById('scrow').style.display = 'none';
+  buildWF('wfn', false); buildWF('wfu', false);
+  document.getElementById('prrec').className = 'pr-btn rec';
+  document.getElementById('prrec').textContent = '⏺ Nachsprechen';
+}
+function prNext() { curW = (curW + 1) % prWords.length; setPrWord(curW); }
+function buildWF(id, act) {
+  const el = document.getElementById(id); if (!el) return; el.innerHTML = '';
+  [5, 11, 18, 30, 42, 52, 58, 52, 44, 38, 50, 56, 48, 40, 32, 24, 16, 26, 36, 46, 40, 32, 20, 12, 6].forEach(h => {
+    const b = document.createElement('div');
+    b.className = `wb ${act ? (id === 'wfn' ? 'nat' : 'act') : ''}`;
+    b.style.height = (act ? h : 5) + 'px'; el.appendChild(b);
+  });
+}
+function prPlay() {
+  buildWF('wfn', true);
+  document.querySelectorAll('#wfn .wb').forEach((b, i) => {
+    setTimeout(() => { b.style.background = 'var(--teal)'; setTimeout(() => { b.style.background = 'rgba(0,180,216,.35)'; }, 300); }, i * 65);
+  });
+}
+function prToggle(btn) {
+  if (!isRec) {
+    isRec = true; btn.className = 'pr-btn rec recding'; btn.textContent = '⏹ Fertig';
+    buildWF('wfu', false); let t = 0;
+    recTimer = setInterval(() => {
+      document.querySelectorAll('#wfu .wb').forEach(b => { b.style.height = (Math.random() * 46 + 5) + 'px'; b.style.background = 'var(--red)'; });
+      t++; if (t > 35) prToggle(btn);
+    }, 130);
+  } else {
+    isRec = false; clearInterval(recTimer);
+    btn.className = 'pr-btn rec'; btn.textContent = '⏺ Nachsprechen';
+    buildWF('wfu', true); setTimeout(showScore, 400);
+  }
+}
+function showScore() {
+  const sc = document.getElementById('scrow'); sc.style.display = 'flex';
+  const s = [Math.round(62 + Math.random() * 22), Math.round(58 + Math.random() * 26), Math.round(54 + Math.random() * 28)];
+  const avg = Math.round(s.reduce((a, b) => a + b) / s.length);
+  document.getElementById('scval').textContent = avg;
+  ['sc1', 'sc2', 'sc3'].forEach((id, i) => document.getElementById(id).textContent = s[i] + '%');
+  const c = 2 * Math.PI * 26;
+  document.getElementById('scarc').setAttribute('stroke-dashoffset', (c - (avg / 100 * c)).toFixed(1));
+}
+
+// ── NAV ──
+function showScr(id, btn) {
+  document.querySelectorAll('.scr').forEach(s => s.classList.remove('active'));
+  document.getElementById('scr-' + id).classList.add('active');
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (id === 'quiz') showQuizSelect();
+  if (id === 'pronun') { buildWF('wfn', false); buildWF('wfu', false); buildChList(); }
+}
+</script>
+</body>
+</html>
